@@ -1,5 +1,5 @@
 /* ============================================================================
-   ChooTrack site — animation engine.
+   ChooTrack site: animation engine.
    Split-flap headline, scroll reveals, hero live↔past crossfade, board wall,
    theme screenshot swapping, train dividers, 3D phone tilt. No dependencies.
    ========================================================================== */
@@ -97,7 +97,7 @@
   }
 
   /* ------------------------------------------------------------ boardwall */
-  const WALL_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:·— ";
+  const WALL_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:· ";
   $$("[data-boardwall] .bw-line").forEach((line) => {
     const raw = line.dataset.text.replace(/\|/g, "  ");
     const tone = line.dataset.tone || "";
@@ -167,7 +167,7 @@
   /* -------------------------------------------------------------- themes */
   const THEMES = {
     dark: {
-      h: "Dark — the original Split-Flap",
+      h: "Dark: the original Split-Flap",
       p: "Warm amber on near-black, coral for the past, teal for on-time. The whole app reads like the big board at Paddington after dark.",
       sw: ["#0D0E11", "#F5B301", "#FF5A4D", "#2EC4B6"],
       shot: "shots/board-live.png",
@@ -175,17 +175,17 @@
     },
     light: {
       h: "Paper & Enamel",
-      p: "Warm ivory and white cards, with amber split by role: still a vivid fill on buttons and pills, but a deep legible gold as text — because yellow text on paper is a crime.",
+      p: "Warm ivory and white cards, with amber split by role: still a vivid fill on buttons and pills, but a deep legible gold as text, because yellow text on paper is a crime.",
       sw: ["#F4EEE1", "#F5B301", "#9A6300", "#E14B3F"],
       shot: "shots/theme-light.png",
-      alt: "The same board in the Paper & Enamel light theme — ivory ground, white cards, dark mechanical board",
+      alt: "The same board in the Paper & Enamel light theme: ivory ground, white cards, dark mechanical board",
     },
     intercity: {
-      h: "InterCity — the Swallow, reimagined",
-      p: "Early-'90s British Rail livery gone green-dominant: deep InterCity green grounds, livery yellow for headings and fills, red strictly for alerts — and the board itself stays the deepest green of all.",
+      h: "InterCity: the Swallow, reimagined",
+      p: "Early-'90s British Rail livery gone green-dominant: deep InterCity green grounds, livery yellow for headings and fills, red strictly for alerts, and the board itself stays the deepest green of all.",
       sw: ["#0D4331", "#F5C518", "#F04434", "#06241B"],
       shot: "shots/theme-intercity.png",
-      alt: "The same board in the InterCity theme — deep green grounds, livery yellow accents, red alert chips",
+      alt: "The same board in the InterCity theme: deep green grounds, livery yellow accents, red alert chips",
     },
   };
   const themeSec = $("#themes");

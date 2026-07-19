@@ -1,14 +1,14 @@
-# ChooTrack — marketing site
+# ChooTrack marketing site
 
 The "Coming Soon" marketing site for **ChooTrack**, the UK rail app that lets you
-rewind the departure board into the past to catch a train you've already missed —
+rewind the departure board into the past to catch a train you've already missed,
 or guess which train you're on from your location and track it live.
 
 **Coming to the iOS App Store · Q3 2026.**
 
 ## About the site
 
-- Static, zero build step, zero runtime dependencies — plain HTML, CSS and JS.
+- Static, zero build step, zero runtime dependencies. Plain HTML, CSS and JS.
 - All product screens are real screenshots captured from the app.
 - Hosted on GitHub Pages.
 
