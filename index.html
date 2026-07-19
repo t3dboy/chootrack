@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ChooTrack — Rewind the railway. Coming to the App Store Q3 2026.</title>
+<meta name="description" content="ChooTrack is the UK rail app with a time scrubber: drag the departure board back in time, pick the train you're actually on — or let it guess from your location — and track it live. Coming to the iOS App Store Q3 2026.">
+<meta property="og:title" content="ChooTrack — Rewind the railway">
+<meta property="og:description" content="Track a train that already left, or let ChooTrack guess which one you're on. Coming Q3 2026.">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================================================================ TOPBAR -->
+<header class="topbar">
+  <div class="logo"><img src="icon.png" alt="ChooTrack app icon — an amber train on black"></div>
+  <div class="name">ChooTrack<sup>™</sup></div>
+  <nav>
+    <a href="#rewind">Rewind</a>
+    <a href="#guess">Guess</a>
+    <a href="#themes">Themes</a>
+    <a class="get" href="#get">Q3&nbsp;2026</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ================================================================== HERO -->
+<section class="hero section">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="k-label reveal"><span class="dot"></span> Coming to the iOS App&nbsp;Store · Q3&nbsp;2026</span>
+
+      <h1 class="h-giant" aria-label="Missed it? Track it anyway.">
+        <span class="row flapline-h1" data-flap>MISSED IT?</span>
+        <span class="row flapline-h1" data-flap data-accent="amber">TRACK IT</span>
+        <span class="row flapline-h1" data-flap data-accent="coral">ANYWAY.</span>
+      </h1>
+
+      <p class="sub reveal" style="--i:2">
+        ChooTrack is the UK rail app with a <b>time scrubber</b>. Drag the departure
+        board <b>back in time</b> and the trains you just missed roll back onto it —
+        pick the one you're sitting on and track it live to the platform.
+        Watch the board on the right travel 28 minutes into the past.
+      </p>
+
+      <div class="hero-ctas reveal" style="--i:3">
+        <span class="appstore-badge soon" aria-label="Coming soon to the App Store, Q3 2026">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08ZM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25Z"/></svg>
+          <span class="t"><small>Coming soon to the</small><b>App Store · Q3 2026</b></span>
+        </span>
+        <a class="btn-ghost" href="#rewind">See the rewind ↓</a>
+      </div>
+    </div>
+
+    <!-- hero phone: THE REAL APP, crossfading live -> 28 minutes into the past -->
+    <div class="hero-phone reveal" style="--i:2;--rr:3deg">
+      <div class="hero-stickers">
+        <span class="sticker amber" style="top:-24px;left:-48px;transform:rotate(-8deg)">Real app · real screens</span>
+        <span class="sticker coral" style="bottom:120px;left:-86px;transform:rotate(6deg)">⟲ Rewind up to 2 hrs</span>
+        <span class="sticker cream" style="top:140px;right:-62px;transform:rotate(7deg)">● Platforms + delays</span>
+      </div>
+      <div class="phone" data-tilt>
+        <div class="phone-frame">
+          <div class="phone-screen xfade" id="heroXfade">
+            <img class="shot" src="shots/board-live.png" alt="ChooTrack departure board for London Paddington, live at 14:00">
+            <img class="shot over" src="shots/board-past.png" alt="The same board rewound 28 minutes into the past — departed trains shown again">
+          </div>
+          <span class="ph-flag live">● LIVE</span>
+          <span class="ph-flag past">⟲ IN THE PAST</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- departure marquee -->
+  <div class="marquee" style="margin-top:72px">
+    <div class="marquee-track" aria-hidden="true">
+      <span>Coming Q3 2026</span>·<span>London Paddington</span>·<span>Bristol Temple Meads</span>·<span>Edinburgh Waverley</span>·<span>Cardiff Central</span>·<span>Manchester Piccadilly</span>·<span>York</span>·<span>Glasgow Central</span>·<span>Penzance</span>·
+      <span>Coming Q3 2026</span>·<span>London Paddington</span>·<span>Bristol Temple Meads</span>·<span>Edinburgh Waverley</span>·<span>Cardiff Central</span>·<span>Manchester Piccadilly</span>·<span>York</span>·<span>Glasgow Central</span>·<span>Penzance</span>·
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ REWIND -->
+<section class="rewind section" id="rewind">
+  <div class="wrap">
+    <div class="rw-copy">
+      <span class="k-label reveal">Headline feature nº1</span>
+      <h2 class="sec-title reveal" style="--i:1">Time travel<br>for <span class="c">timetables.</span></h2>
+      <p class="sub reveal" style="--i:2">
+        Every rail app shows you what's next. Only ChooTrack's scrubber goes
+        <b>backwards</b> — the board warms to coral, "28 minutes ago" replaces "now",
+        and every train that already left is back on the board, one tap from being
+        tracked. These are real screenshots of the real board.
+      </p>
+      <div class="steps">
+        <div class="step on"><span class="n">1</span><div><h3>Grab the scrubber</h3><p>The board is live. A fine per-minute <em>grinding haptic</em> ratchets under your finger as you drag — with a solid thunk at "now".</p></div></div>
+        <div class="step on"><span class="n">2</span><div><h3>Drag into the past</h3><p>Up to two hours back. "Missed your train? Drag back" becomes "Drag to return to live".</p></div></div>
+        <div class="step on"><span class="n">3</span><div><h3>Tap the one you're on</h3><p>Departed trains list their platform and actual departure time. The 13:35 to Bristol is still selectable.</p></div></div>
+        <div class="step on"><span class="n">4</span><div><h3>Track it to the platform</h3><p>Live ETA, next stop, the train crawling its calling-point spine — all for a train other apps pretend never existed.</p></div></div>
+      </div>
+    </div>
+
+    <div class="rw-phones">
+      <div class="phone small reveal" style="--i:1;--rr:-5deg" data-tilt>
+        <div class="ph-cap">NOW</div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img class="shot" src="shots/board-live.png" alt="Live Paddington departures at 14:00 — Bristol on time, Cardiff 4 minutes late">
+          </div>
+        </div>
+      </div>
+      <div class="rw-arrow reveal" style="--i:2" aria-hidden="true">⟲<small>drag<br>back</small></div>
+      <div class="phone small reveal" style="--i:3;--rr:5deg" data-tilt>
+        <div class="ph-cap coral">28 MIN AGO</div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img class="shot" src="shots/board-past.png" alt="The board rewound to 13:32 — IN THE PAST tag, departed trains for Bristol, Cardiff, Oxford and Swansea listed again">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= GUESS -->
+<section class="guess-sec section" id="guess">
+  <div class="wrap">
+    <div class="guess-phone">
+      <div class="hero-stickers">
+        <span class="sticker amber" style="top:-20px;right:-40px;transform:rotate(7deg)">Very likely</span>
+        <span class="sticker cream" style="bottom:110px;left:-74px;transform:rotate(-6deg)">📍 One location fix</span>
+      </div>
+      <div class="phone reveal" style="--rr:-3deg" data-tilt>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img class="shot" src="shots/guess.png" alt="Guess my train — ChooTrack lists the services you're most likely aboard: VERY LIKELY Bristol Temple Meads near Reading, 90 yards away">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="guess-copy">
+      <span class="k-label reveal">Headline feature nº2</span>
+      <h2 class="sec-title reveal" style="--i:1">On a train?<br><span class="g">It knows which one.</span></h2>
+      <p class="sub reveal" style="--i:2">
+        You're aboard, moving, and you never opened the app at the station.
+        Tap <b>Guess my train</b>: one location fix, and ChooTrack shortlists the
+        live services you're most likely sitting on — ranked
+        <b>very likely</b> to <b>possible</b>, with where they are right now.
+      </p>
+      <ul class="ticks reveal" style="--i:3">
+        <li><b>“Near Reading · 90 yd away”</b> — it matches your position to the line, not just the nearest station.</li>
+        <li>Pick a candidate and you're straight into the normal track flow — ETA, platform, calling points.</li>
+        <li>Works with the rewind: boarded 20 minutes ago? The scrubber already knows your train.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="marquee amber"><div class="marquee-track" aria-hidden="true">
+  <span>⟲ Rewind</span>◆<span>Guess my train</span>◆<span>Track to the platform</span>◆<span>Three themes</span>◆<span>Grinding haptics</span>◆<span>Coming Q3 2026</span>◆<span>⟲ Rewind</span>◆<span>Guess my train</span>◆<span>Track to the platform</span>◆<span>Three themes</span>◆<span>Grinding haptics</span>◆<span>Coming Q3 2026</span>◆
+</div></div>
+
+<!-- ============================================================= BOARDWALL -->
+<section class="boardwall" id="board">
+  <div class="wrap">
+    <div class="bw-head">
+      <h2 class="reveal">The board is the app</h2>
+      <span class="r reveal" style="--i:1">SPLIT-FLAP // EST. LDN PAD</span>
+    </div>
+    <div class="bw" data-boardwall aria-label="A giant split-flap departure board">
+      <div class="bw-line" data-text="13:35|BRISTOL T MEADS |DEPARTED" data-tone="coral"></div>
+      <div class="bw-line" data-text="13:42|CARDIFF CENTRAL |DEPARTED" data-tone="coral"></div>
+      <div class="bw-line" data-text="13:35|CATCH IT ANYWAY |TRACKED " data-tone="amber"></div>
+      <div class="bw-line" data-text="14:03|BRISTOL T MEADS |ON TIME " data-tone="teal"></div>
+      <div class="bw-line" data-text="Q3 26|CHOOTRACK       |COMING  " data-tone="amber"></div>
+    </div>
+    <p class="bw-note reveal">Monospace on a near-black ground with a one-pixel seam across every tile — legible at arm's length, exactly like the real thing. The board stays dark in every theme, because a station display is always a station display.</p>
+  </div>
+</section>
+
+<!-- ================================================================= TRACK -->
+<section class="track-sec section" id="track">
+  <div class="wrap">
+    <div>
+      <span class="k-label reveal"><span class="dot"></span> After you pick your train</span>
+      <h2 class="sec-title reveal" style="--i:1">A train on<br><span class="gold">the tracks.</span></h2>
+      <p class="sub reveal" style="--i:2">
+        Track a service — even one that departed before you opened the app — and the
+        detail screen becomes a literal <b>train on the tracks</b>: passed stops are
+        linked amber carriages, the current stop is a glowing locomotive, late stops
+        run coral. The Track tab keeps every journey's <b>live ETA</b> a glance away,
+        re-arms your commute with <b>Track daily</b>, and rides your Lock Screen as a
+        Live Activity.
+      </p>
+      <div class="mini-feats reveal" style="--i:3">
+        <span class="mf">🚂 Calling-point spine</span>
+        <span class="mf">◎ Track daily</span>
+        <span class="mf">🔒 Live Activity</span>
+        <span class="mf">📌 Home-screen widget</span>
+      </div>
+    </div>
+    <div class="phones-duo">
+      <div class="phone small p1 reveal" style="--i:1;--rr:-6deg" data-tilt>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img class="shot" src="shots/detail.png" alt="ChooTrack service detail — the calling-point spine drawn as a train: amber carriages for passed stops, a glowing locomotive at the current stop">
+          </div>
+        </div>
+      </div>
+      <div class="phone small p2 reveal" style="--i:2;--rr:5deg" data-tilt>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img class="shot" src="shots/track.png" alt="The Track tab — tracked journeys with live ETAs and the amber Guess my train bar">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== FEATURES -->
+<section class="features section" id="features">
+  <div class="wrap">
+    <span class="k-label reveal"><span class="dot"></span> And the rest of the kit</span>
+    <h2 class="h-giant reveal" style="--i:1;font-size:clamp(30px,5.2vw,72px)">
+      <span class="row">Built like a <span class="hl-amber">station board.</span></span>
+      <span class="row">Runs like a <span class="outline">stopwatch.</span></span>
+    </h2>
+
+    <div class="grid">
+      <div class="fcard reveal" style="--i:0;--rr:-2deg"><div class="ic">🔀</div><h3>Plan A→B</h3><p>Multi-leg journey planning with per-leg tracking — each change gets its own live ETA, platform, and delay state.</p></div>
+      <div class="fcard reveal" style="--i:1;--rr:2deg"><div class="ic">🫱</div><h3>Meet arrivals</h3><p>Flip any board to arrivals, framed for meeting someone off a train — where it's from, when it lands, which platform.</p></div>
+      <div class="fcard reveal" style="--i:2;--rr:-1deg"><div class="ic">🥁</div><h3>Grinding haptics</h3><p>The scrubber ratchets per minute with firmer notches every five and a solid thunk at now. Boards click. Tabs snap.</p></div>
+      <div class="fcard reveal" style="--i:3;--rr:2deg"><div class="ic">🔎</div><h3>Fuzzy search</h3><p>“pad”, “paddington”, or “lpd” all find London Paddington — CRS codes, prefixes, substrings, entirely on-device.</p></div>
+      <div class="fcard reveal" style="--i:0;--rr:2deg"><div class="ic">📅</div><h3>Any day's board</h3><p>A calendar flips the board to another date for planning ahead — the rewind stays reserved for today.</p></div>
+      <div class="fcard reveal" style="--i:1;--rr:-2deg"><div class="ic">📍</div><h3>Nearest stations</h3><p>One tap lists the closest stations within your radius, with pinned favourites and recents a swipe away.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- train divider -->
+<div class="trainline" data-train>
+  <div class="the-train">
+    <div class="loco"><div class="win"></div><div class="nose"></div><span class="wheel w1"></span><span class="wheel w2"></span></div>
+    <div class="car"><div class="win"></div><span class="wheel w1"></span><span class="wheel w2"></span></div>
+    <div class="car coral"><div class="win"></div><span class="wheel w1"></span><span class="wheel w2"></span></div>
+    <div class="car teal"><div class="win"></div><span class="wheel w1"></span><span class="wheel w2"></span></div>
+  </div>
+  <div class="rails"></div>
+</div>
+
+<!-- ================================================================ THEMES -->
+<section class="themes-sec section" id="themes" data-mode="dark">
+  <div class="wrap">
+    <div>
+      <span class="k-label reveal">Theming</span>
+      <h2 class="sec-title reveal" style="--i:1">One board.<br>Three liveries.</h2>
+      <p class="sub reveal" style="--i:2">
+        Not naive palette swaps — each theme is re-designed token by token, and the
+        mechanical boards stay dark in all of them. These are the real screens; try them:
+      </p>
+
+      <div class="theme-chips reveal" style="--i:3">
+        <button class="tchip on" data-t="dark">● Dark</button>
+        <button class="tchip" data-t="light">○ Paper &amp; Enamel</button>
+        <button class="tchip" data-t="intercity">▲ InterCity</button>
+      </div>
+
+      <div class="theme-copy" id="themeCopy">
+        <h3>Dark — the original Split-Flap</h3>
+        <p>Warm amber on near-black, coral for the past, teal for on-time. The whole app reads like the big board at Paddington after dark.</p>
+      </div>
+
+      <div class="swatches" id="themeSwatches" aria-hidden="true">
+        <span class="sw" style="background:#0D0E11"></span>
+        <span class="sw" style="background:#F5B301"></span>
+        <span class="sw" style="background:#FF5A4D"></span>
+        <span class="sw" style="background:#2EC4B6"></span>
+      </div>
+    </div>
+
+    <div class="themes-phone reveal" style="--i:2">
+      <div class="phone" data-tilt>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img class="shot" id="themeShot" src="shots/board-live.png" alt="The Paddington departure board in the Dark theme">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- train divider 2 (InterCity colours) -->
+<div class="trainline ic" data-train>
+  <div class="the-train">
+    <div class="loco yellow"><div class="win"></div><div class="nose"></div><span class="wheel w1"></span><span class="wheel w2"></span></div>
+    <div class="car white"><div class="win"></div><span class="wheel w1"></span><span class="wheel w2"></span></div>
+    <div class="car red"><div class="win"></div><span class="wheel w1"></span><span class="wheel w2"></span></div>
+  </div>
+  <div class="rails"></div>
+</div>
+
+<!-- =================================================================== CTA -->
+<section class="cta-sec section" id="get">
+  <div class="ticket reveal drop" style="--rr:-4deg">
+    <span class="sticker coral punched">Boarding Q3 2026 · No peak fares</span>
+    <div class="stripe">ChooTrack <span class="hide-s">·</span><span class="hide-s">Advance Single</span>
+      <span class="rt">LDN&nbsp;PAD&nbsp;⇄&nbsp;ANYWHERE</span>
+    </div>
+    <div class="bodyy">
+      <div>
+        <h2>Departing<br>Q3 2026.</h2>
+        <p>ChooTrack arrives on the App Store in Q3 2026 — live departures, arrivals,
+        the rewind, Guess my train, journey planning, widgets and all three themes.
+        Free, no account, no faff.</p>
+        <div class="fare">
+          <span>CLASS<b>STD</b></span>
+          <span>PRICE<b>£0.00</b></span>
+          <span>PLATFORM<b>iOS 17+</b></span>
+          <span>DEPARTS<b>Q3 2026</b></span>
+        </div>
+      </div>
+      <div class="qr-zone">
+        <span class="appstore-badge soon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08ZM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25Z"/></svg>
+          <span class="t"><small>Coming soon to the</small><b>App Store</b></span>
+        </span>
+        <div class="barcode" aria-hidden="true"></div>
+        <span class="fine">Signal set to green when the app clears final inspection.</span>
+      </div>
+    </div>
+    <span class="notch l"></span><span class="notch r"></span>
+  </div>
+</section>
+
+</main>
+
+<!-- ================================================================ FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fbrand">
+      <img src="icon.png" alt="">
+      <div><span class="n">ChooTrack™</span><small>UK RAIL, REWOUND · Q3 2026</small></div>
+    </div>
+    <nav>
+      <a href="#rewind">Rewind</a>
+      <a href="#guess">Guess</a>
+      <a href="#themes">Themes</a>
+      <a href="#get">Q3 2026</a>
+    </nav>
+    <div class="legal">
+      © Ted Roubour. ChooTrack is an independent app and is not affiliated with National Rail or any train operating company.<br>
+      All product screens are real, captured from the app. Live train data will be powered by National Rail Enquiries (LDBWS) and Realtime Trains.<br>
+      Built like a departure board: monospace, amber, and always on time. Eventually.
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
