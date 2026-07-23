@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Support · ChooTrack</title>
+<meta name="description" content="Help, FAQ and contact for ChooTrack, the UK rail app with a time scrubber. Missing trains, delay differences, Guess my train, Live Activities and home stations explained.">
+<meta property="og:title" content="ChooTrack support">
+<meta property="og:description" content="FAQ, known limitations and how to get in touch about ChooTrack.">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================================================================ TOPBAR -->
+<header class="topbar">
+  <div class="logo"><img src="icon.png" alt="ChooTrack app icon, an amber train on black"></div>
+  <div class="name">ChooTrack<sup>™</sup></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy</a>
+    <a class="get" href="index.html#get">Q3&nbsp;2026</a>
+  </nav>
+</header>
+
+<main>
+<section class="doc">
+  <div class="wrap">
+
+    <div class="doc-head">
+      <span class="stamp">Help desk · Platform 1</span>
+      <h1>Support</h1>
+      <p class="lede">
+        Something not behaving? Start here. Most questions are about where the train
+        data comes from and why it sometimes disagrees with the board on the
+        concourse. If this page doesn't cover it, the contact block at the bottom
+        reaches a real person.
+      </p>
+      <div class="factstrip">
+        <span class="fact">iOS 17+</span>
+        <span class="fact cream">Free</span>
+        <span class="fact cream">No account</span>
+        <span class="fact amber">UK rail only</span>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------ what it does -->
+    <div class="card dark">
+      <h2>What ChooTrack does</h2>
+      <p>
+        ChooTrack is a UK rail departures and arrivals app with one unusual trick: a
+        <b>time scrubber</b> that drags the departure board backwards, up to two hours,
+        so the train you just boarded (and every other app has already forgotten) is
+        back on the board and one tap from being tracked.
+      </p>
+      <ul>
+        <li><b>Live boards</b> for any UK National Rail station, departures or arrivals.</li>
+        <li><b>Rewind</b> the board into the past and pick a service that has already left.</li>
+        <li><b>Guess my train</b>: one location fix shortlists the live services you are most likely aboard.</li>
+        <li><b>Track</b> a service for a live ETA, platform, next stop and calling points, with a Lock Screen Live Activity and a home-screen widget.</li>
+        <li><b>Pins, recents and a home station</b> so your usual journey is one tap away.</li>
+      </ul>
+    </div>
+
+    <!-- --------------------------------------------------------------- FAQ -->
+    <h2 style="font-family:var(--disp);text-transform:uppercase;font-size:clamp(24px,4.6vw,42px);margin:46px 0 4px">Common questions</h2>
+
+    <div class="faq">
+
+      <details>
+        <summary>Why is a train missing from the board?</summary>
+        <div class="a">
+          <p>
+            ChooTrack shows exactly what the rail data feeds publish for that station,
+            and nothing more. A service can be absent because it has been cancelled and
+            withdrawn from the feed, because it does not call at that station at all
+            (some trains pass through without stopping), or because the operator has
+            not yet published it.
+          </p>
+          <p>
+            Boards also have a horizon: very distant departures may not appear until
+            closer to the time. If you are looking at today and the train has already
+            gone, <b>drag the scrubber backwards</b>; departed services reappear with
+            their actual departure time and platform.
+          </p>
+          <p>
+            If a train is on the physical station board but not in ChooTrack, that is
+            worth reporting: send us the station, the scheduled time and the
+            destination and we will look at what the feed returned.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Why is a delay different from the station board?</summary>
+        <div class="a">
+          <p>
+            The screens at the station and the data ChooTrack receives do not always
+            update at the same moment. Estimates are revised continuously as a train
+            moves, and different systems pick up those revisions at slightly different
+            times, so a minute or two of disagreement is normal.
+          </p>
+          <p>
+            ChooTrack blends two sources: <b>National Rail Enquiries</b> for the
+            departure and arrival board, and <b>Realtime Trains</b> for where the
+            service actually is along its route. When a service is disrupted, those two
+            can briefly disagree with each other as well.
+          </p>
+          <p>
+            For anything safety-critical or time-critical, such as a last connection of
+            the night, please treat the station's own displays and staff as the
+            authority.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What is “Guess my train”?</summary>
+        <div class="a">
+          <p>
+            You are already aboard and moving, and you never opened the app at the
+            station. Tap <b>Guess my train</b> and ChooTrack takes a single location
+            fix, matches your position against live services running nearby, and gives
+            you a shortlist ranked from <b>very likely</b> to <b>possible</b>, with
+            where each one is right now.
+          </p>
+          <p>
+            Pick one and you are straight into the normal tracking flow. It works best
+            on the move, and it is a guess: on a corridor where several services run
+            close together, check the destination before you track.
+          </p>
+          <p>
+            It needs location permission, asked once, When-In-Use only. The coordinate
+            is used to identify the train and is not stored. See the
+            <a href="privacy.html#contact">privacy policy</a> for the detail.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Why does a Live Activity need a real device?</summary>
+        <div class="a">
+          <p>
+            Live Activities on the Lock Screen and Dynamic Island are kept up to date by
+            <b>Apple's push notification service</b>. ChooTrack's backend watches your
+            tracked service and pushes each update to the token Apple issued for that
+            activity.
+          </p>
+          <p>
+            The iOS Simulator cannot receive those pushes, so a Live Activity in the
+            Simulator will appear but never move. On a real iPhone it updates as the
+            train does. Keep notifications enabled for ChooTrack, and keep Live
+            Activities turned on in iOS Settings → ChooTrack.
+          </p>
+          <p>
+            If an activity goes stale on a real device, check that the phone has a data
+            connection, that Low Power Mode or Focus is not suppressing updates, and
+            that the journey has not already completed, which ends the activity by
+            design.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I set a home station?</summary>
+        <div class="a">
+          <p>
+            Open <b>Settings</b> in the app and choose <b>Home station</b>, then search
+            for the station by name or CRS code. Fuzzy search accepts “pad”,
+            “paddington” or “PAD”.
+          </p>
+          <p>
+            Your home station is what the app opens on and what the home-screen widget
+            shows. You can change or clear it at any time; it is stored only on your
+            device. Pinned stations and recents sit alongside it on the search screen
+            for everything else.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Does ChooTrack cost anything, or need an account?</summary>
+        <div class="a">
+          <p>
+            No and no. ChooTrack is free, has no in-app purchases, no subscription, and
+            no sign-up. There is nothing to log into and nothing to restore.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I stop tracking a journey?</summary>
+        <div class="a">
+          <p>
+            Open the <b>Track</b> tab and remove the journey. Tracking also ends on its
+            own when the journey completes. Either way, the record the backend held for
+            it (service id, boarding and alighting stations, push token) is deleted.
+          </p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- ------------------------------------------------------- limitations -->
+    <div class="card">
+      <h2>Known limitations</h2>
+      <ul>
+        <li><b>The data is only as good as the feeds.</b> ChooTrack does not observe trains itself. Everything comes from National Rail Enquiries and Realtime Trains, and can lag, be incomplete, or be revised.</li>
+        <li><b>Disruption is where feeds struggle most.</b> During major disruption, cancellations, diversions and platform changes can appear late or inconsistently.</li>
+        <li><b>Rewind is for today.</b> The scrubber goes back up to two hours on the current day. For other dates, use the calendar to load that day's board instead.</li>
+        <li><b>Guess my train is a ranked guess</b>, not a certainty, and it needs a live location fix and mobile signal.</li>
+        <li><b>UK National Rail only.</b> No Underground, tram, metro, bus or non-UK services.</li>
+        <li><b>Live Activities and widgets need a real device</b> with notifications enabled and a data connection.</li>
+        <li><b>Not a source of truth for boarding decisions.</b> Always defer to station displays and staff.</li>
+      </ul>
+    </div>
+
+    <!-- ------------------------------------------------------ before asking -->
+    <div class="card">
+      <h2>Before you get in touch</h2>
+      <p>Two minutes of detail saves a lot of back-and-forth. Please include:</p>
+      <ul>
+        <li>Your iOS version and the ChooTrack version (Settings → About).</li>
+        <li>The station, date and scheduled time of the service involved.</li>
+        <li>What you expected, and what you actually saw.</li>
+        <li>A screenshot, if the problem is visible on screen.</li>
+      </ul>
+      <p>
+        We do not collect diagnostics automatically, so what you tell us is genuinely
+        all we have to go on.
+      </p>
+    </div>
+
+    <div class="card amber" id="contact">
+      <h2>Contact support</h2>
+      <p>
+        Send a message and a human will read it — no account, no ticket number, no
+        queue. Add your email only if you'd like a reply. Bug reports and “this train
+        was wrong” reports are both welcome; the second kind is how the data problems
+        get found.
+      </p>
+      <form id="contactForm" class="contact-form" novalidate>
+        <label>Name <span class="opt">(optional)</span>
+          <input type="text" name="name" autocomplete="name" maxlength="200">
+        </label>
+        <label>Email <span class="opt">(optional — for a reply)</span>
+          <input type="email" name="email" autocomplete="email" maxlength="320">
+        </label>
+        <label>Message
+          <textarea name="message" rows="5" maxlength="4000" required></textarea>
+        </label>
+        <!-- Honeypot: hidden from people, tempting to bots. A filled value is dropped. -->
+        <div class="hp" aria-hidden="true">
+          <label>Leave this field empty
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+        </div>
+        <button type="submit">Send message</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <p>
+        For privacy questions specifically, see the
+        <a href="privacy.html">privacy policy</a>.
+      </p>
+    </div>
+
+    <script>
+      (function () {
+        var API = "https://chootrack-api.fly.dev/v1/contact";
+        var form = document.getElementById("contactForm");
+        var status = form.querySelector(".form-status");
+        var btn = form.querySelector("button[type=submit]");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var fd = new FormData(form);
+          var msg = (fd.get("message") || "").trim();
+          if (!msg) { status.textContent = "Please type a message first."; status.className = "form-status err"; return; }
+          var payload = {
+            name: fd.get("name") || "", email: fd.get("email") || "",
+            message: msg, website: fd.get("website") || "", source: "support-page"
+          };
+          btn.disabled = true; status.textContent = "Sending…"; status.className = "form-status";
+          fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+            .then(function (r) {
+              if (r.ok) {
+                form.reset();
+                status.textContent = "Thanks — your message is on its way. We'll reply if you left an email.";
+                status.className = "form-status ok";
+              } else if (r.status === 429) {
+                status.textContent = "Too many messages just now — please wait a minute and try again.";
+                status.className = "form-status err";
+              } else {
+                status.textContent = "Sorry, that didn't send. Please try again in a moment.";
+                status.className = "form-status err";
+              }
+            })
+            .catch(function () {
+              status.textContent = "Couldn't reach the server — check your connection and try again.";
+              status.className = "form-status err";
+            })
+            .finally(function () { btn.disabled = false; });
+        });
+      })();
+    </script>
+
+    <div class="card">
+      <h2>Data attribution</h2>
+      <p class="attrib" style="border-top:none;padding-top:0;margin-top:0">
+        Powered by National Rail Enquiries. Contains information of National Rail
+        Enquiries, licensed under the Rail Data Marketplace terms. Service progress
+        information provided by Realtime Trains. ChooTrack is an independent app and is
+        not affiliated with National Rail, Network Rail, or any train operating company.
+      </p>
+    </div>
+
+    <div class="doc-nav">
+      <a class="amber" href="index.html">← Back to ChooTrack</a>
+      <a href="privacy.html">Privacy policy →</a>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<!-- ================================================================ FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fbrand">
+      <img src="icon.png" alt="">
+      <div><span class="n">ChooTrack™</span><small>UK RAIL, REWOUND · Q3 2026</small></div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="index.html#get">Q3 2026</a>
+    </nav>
+    <div class="legal">
+      © Ted Roubour. ChooTrack is an independent app and is not affiliated with National Rail or any train operating company.<br>
+      Live train data will be powered by National Rail Enquiries (LDBWS) and Realtime Trains.<br>
+      Built like a departure board: monospace, amber, and always on time. Eventually.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
