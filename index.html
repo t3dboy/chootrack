@@ -508,181 +508,68 @@
       <span class="k-label reveal"><span class="dot"></span> The journey planner</span>
       <h3 class="jp-head reveal" style="--i:1">No direct train?<br><span class="g">It finds the way.</span></h3>
       <p class="sub reveal" style="--i:2">
-        Ask for <b>Billingshurst → Edinburgh</b> and no single train will take you.
+        Ask for <b>Billingshurst to Edinburgh</b> and no single train will take you.
         The planner stitches one anyway: Southern to Three Bridges, Thameslink to
         Blackfriars, a short Tube or walk to King's Cross, then LNER all the way
-        north. Two changes and a cross-London transfer, joined up automatically.
+        north. Two changes and a cross-London transfer, joined up automatically. Here
+        is the whole machine, from the nightly build to the journey it hands you.
       </p>
 
-      <div class="how-diagram reveal" style="--i:3" data-flowdiagram>
-        <div class="jp-route">
-          <span class="rt-b">Billingshurst</span>→<span class="rt-b">Edinburgh</span>
-          <span class="rt-n">2 changes + 1 cross-London transfer · found in milliseconds</span>
+      <!-- The pipeline: nightly build, snapshot loop, then the scan, feeding the strip -->
+      <div class="jp-pipe reveal" style="--i:3" data-flowdiagram aria-label="How the planner is built each night and answers each query">
+        <div class="pl-stage">
+          <span class="pl-tag ink">Nightly · ~3am</span>
+          <b>Whole GB timetable</b>
+          <small>Network Rail's SCHEDULE feed, about a million lines, plus the codes that map raw locations to stations.</small>
+        </div>
+        <span class="pl-arrow" aria-hidden="true"><span class="pl-dash ink"></span></span>
+        <div class="pl-stage">
+          <span class="pl-tag teal">Parse + resolve</span>
+          <b>~70,000 trains</b>
+          <small>Passenger only, for the next 3 days. Short-term changes and cancellations resolved so each date is what will really run.</small>
+        </div>
+        <span class="pl-arrow" aria-hidden="true"><span class="pl-dash teal"></span></span>
+        <div class="pl-stage hot">
+          <span class="pl-tag amber">Held in memory</span>
+          <b>~255,000 hops</b>
+          <small>Every train exploded into station-to-station hops, sorted by departure. Cross-London fixed links and station change times join here.</small>
         </div>
 
-        <!-- desktop / tablet: the strip runs left to right -->
-        <svg class="jp-desk" viewBox="0 0 960 200" role="img" aria-labelledby="jpTitleD jpDescD">
-          <title id="jpTitleD">The journey planner: Billingshurst to Edinburgh</title>
-          <desc id="jpDescD">Journey strip. Southern from Billingshurst to Three Bridges, a change with a 5 minute minimum, Thameslink to Blackfriars, a Tube or walk transfer to King's Cross that is not counted as a change, then LNER to Edinburgh. Every train leg is individually trackable live.</desc>
-
-          <!-- leg rails -->
-          <path class="hx-pipe" d="M78 104 H272"/>
-          <path class="hx-pipe" d="M308 104 H502"/>
-          <path class="hx-pipe" d="M718 104 H882"/>
-
-          <!-- travelling dashes: the journey flowing left to right -->
-          <path class="hx-flow hx-teal"  d="M78 104 H272"/>
-          <path class="hx-flow hx-amber" d="M308 104 H502"/>
-          <path class="hx-flow hx-ink hx-slow" d="M538 104 H682"/>
-          <path class="hx-flow hx-coral" d="M718 104 H882"/>
-
-          <!-- direction chevrons -->
-          <polygon class="hx-chev" points="258,96 272,104 258,112"/>
-          <polygon class="hx-chev" points="488,96 502,104 488,112"/>
-          <polygon class="hx-chev" points="668,96 682,104 668,112"/>
-          <polygon class="hx-chev" points="868,96 882,104 868,112"/>
-
-          <!-- per-leg chips -->
-          <rect class="hx-shadow" x="140" y="33" width="76" height="22" rx="11"/>
-          <rect class="jp-chip" x="137" y="30" width="76" height="22" rx="11"/>
-          <text class="jp-chip-t" x="175" y="45" text-anchor="middle">✓ TRACKABLE</text>
-          <rect class="hx-shadow" x="370" y="33" width="76" height="22" rx="11"/>
-          <rect class="jp-chip" x="367" y="30" width="76" height="22" rx="11"/>
-          <text class="jp-chip-t" x="405" y="45" text-anchor="middle">✓ TRACKABLE</text>
-          <rect class="hx-shadow" x="571" y="33" width="84" height="22" rx="11"/>
-          <rect class="jp-chip paper" x="568" y="30" width="84" height="22" rx="11"/>
-          <text class="jp-chip-t" x="610" y="45" text-anchor="middle">NOT A CHANGE</text>
-          <rect class="hx-shadow" x="765" y="33" width="76" height="22" rx="11"/>
-          <rect class="jp-chip" x="762" y="30" width="76" height="22" rx="11"/>
-          <text class="jp-chip-t" x="800" y="45" text-anchor="middle">✓ TRACKABLE</text>
-
-          <!-- operator / link labels -->
-          <text class="hx-lab hx-lab-teal"  x="175" y="74" text-anchor="middle">SOUTHERN</text>
-          <text class="hx-lab hx-lab-amber" x="405" y="74" text-anchor="middle">THAMESLINK</text>
-          <text class="hx-lab hx-lab-ink"   x="610" y="74" text-anchor="middle">TUBE / WALK</text>
-          <text class="hx-lab hx-lab-coral" x="800" y="74" text-anchor="middle">LNER</text>
-
-          <!-- station nodes -->
-          <circle class="hx-shadow" cx="64" cy="108" r="14"/>
-          <circle class="jp-st" cx="60" cy="104" r="14"/>
-          <circle class="hx-shadow" cx="294" cy="108" r="14"/>
-          <circle class="jp-st amber" cx="290" cy="104" r="14"/>
-          <circle class="hx-shadow" cx="524" cy="108" r="14"/>
-          <circle class="jp-st" cx="520" cy="104" r="14"/>
-          <circle class="hx-shadow" cx="704" cy="108" r="14"/>
-          <circle class="jp-st amber" cx="700" cy="104" r="14"/>
-          <circle class="hx-shadow" cx="904" cy="108" r="14"/>
-          <circle class="jp-st teal" cx="900" cy="104" r="14"/>
-
-          <!-- station names -->
-          <text class="jp-name" x="60"  y="144" text-anchor="middle" font-size="11">BILLINGSHURST</text>
-          <text class="jp-sub"  x="60"  y="162" text-anchor="middle" font-size="9">no direct train exists</text>
-          <text class="jp-name" x="290" y="144" text-anchor="middle" font-size="11">THREE BRIDGES</text>
-          <text class="jp-sub gold" x="290" y="162" text-anchor="middle" font-size="9">change · 5 min minimum</text>
-          <text class="jp-name" x="520" y="144" text-anchor="middle" font-size="11">BLACKFRIARS</text>
-          <text class="jp-sub"  x="520" y="162" text-anchor="middle" font-size="9">off here for the Tube</text>
-          <text class="jp-name" x="700" y="144" text-anchor="middle" font-size="11">KING'S CROSS</text>
-          <text class="jp-sub gold" x="700" y="162" text-anchor="middle" font-size="9">change · London terminal</text>
-          <text class="jp-name" x="900" y="144" text-anchor="middle" font-size="11">EDINBURGH</text>
-          <text class="jp-sub"  x="900" y="162" text-anchor="middle" font-size="9">arrival</text>
-        </svg>
-
-        <!-- mobile: the strip runs top to bottom -->
-        <svg class="jp-mob" viewBox="0 0 380 660" role="img" aria-labelledby="jpTitleM jpDescM">
-          <title id="jpTitleM">The journey planner: Billingshurst to Edinburgh</title>
-          <desc id="jpDescM">Journey strip. Southern from Billingshurst to Three Bridges, a change with a 5 minute minimum, Thameslink to Blackfriars, a Tube or walk transfer to King's Cross that is not counted as a change, then LNER to Edinburgh. Every train leg is individually trackable live.</desc>
-
-          <!-- leg rails -->
-          <path class="hx-pipe" d="M48 57 V173"/>
-          <path class="hx-pipe" d="M48 207 V323"/>
-          <path class="hx-pipe" d="M48 487 V603"/>
-
-          <!-- travelling dashes: the journey flowing top to bottom -->
-          <path class="hx-flow hx-teal"  d="M48 57 V173"/>
-          <path class="hx-flow hx-amber" d="M48 207 V323"/>
-          <path class="hx-flow hx-ink hx-slow" d="M48 357 V453"/>
-          <path class="hx-flow hx-coral" d="M48 487 V603"/>
-
-          <!-- direction chevrons -->
-          <polygon class="hx-chev" points="40,159 48,173 56,159"/>
-          <polygon class="hx-chev" points="40,309 48,323 56,309"/>
-          <polygon class="hx-chev" points="40,439 48,453 56,439"/>
-          <polygon class="hx-chev" points="40,589 48,603 56,589"/>
-
-          <!-- leg labels + chips -->
-          <text class="hx-lab hx-lab-teal" x="76" y="109" text-anchor="start">SOUTHERN</text>
-          <rect class="hx-shadow" x="79" y="122" width="78" height="20" rx="10"/>
-          <rect class="jp-chip" x="76" y="119" width="78" height="20" rx="10"/>
-          <text class="jp-chip-t" x="115" y="132" text-anchor="middle">✓ TRACKABLE</text>
-
-          <text class="hx-lab hx-lab-amber" x="76" y="259" text-anchor="start">THAMESLINK</text>
-          <rect class="hx-shadow" x="79" y="272" width="78" height="20" rx="10"/>
-          <rect class="jp-chip" x="76" y="269" width="78" height="20" rx="10"/>
-          <text class="jp-chip-t" x="115" y="282" text-anchor="middle">✓ TRACKABLE</text>
-
-          <text class="hx-lab hx-lab-ink" x="76" y="399" text-anchor="start">TUBE / WALK</text>
-          <rect class="hx-shadow" x="79" y="412" width="88" height="20" rx="10"/>
-          <rect class="jp-chip paper" x="76" y="409" width="88" height="20" rx="10"/>
-          <text class="jp-chip-t" x="120" y="422" text-anchor="middle">NOT A CHANGE</text>
-
-          <text class="hx-lab hx-lab-coral" x="76" y="539" text-anchor="start">LNER</text>
-          <rect class="hx-shadow" x="79" y="552" width="78" height="20" rx="10"/>
-          <rect class="jp-chip" x="76" y="549" width="78" height="20" rx="10"/>
-          <text class="jp-chip-t" x="115" y="562" text-anchor="middle">✓ TRACKABLE</text>
-
-          <!-- station nodes -->
-          <circle class="hx-shadow" cx="52" cy="44" r="13"/>
-          <circle class="jp-st" cx="48" cy="40" r="13"/>
-          <circle class="hx-shadow" cx="52" cy="194" r="13"/>
-          <circle class="jp-st amber" cx="48" cy="190" r="13"/>
-          <circle class="hx-shadow" cx="52" cy="344" r="13"/>
-          <circle class="jp-st" cx="48" cy="340" r="13"/>
-          <circle class="hx-shadow" cx="52" cy="474" r="13"/>
-          <circle class="jp-st amber" cx="48" cy="470" r="13"/>
-          <circle class="hx-shadow" cx="52" cy="624" r="13"/>
-          <circle class="jp-st teal" cx="48" cy="620" r="13"/>
-
-          <!-- station names -->
-          <text class="jp-name" x="76" y="44" text-anchor="start" font-size="12.5">BILLINGSHURST</text>
-          <text class="jp-sub"  x="76" y="62" text-anchor="start" font-size="9.5">no direct train exists</text>
-          <text class="jp-name" x="76" y="194" text-anchor="start" font-size="12.5">THREE BRIDGES</text>
-          <text class="jp-sub gold" x="76" y="212" text-anchor="start" font-size="9.5">change · 5 min minimum</text>
-          <text class="jp-name" x="76" y="344" text-anchor="start" font-size="12.5">BLACKFRIARS</text>
-          <text class="jp-sub"  x="76" y="362" text-anchor="start" font-size="9.5">off here for the Tube</text>
-          <text class="jp-name" x="76" y="474" text-anchor="start" font-size="12.5">KING'S CROSS</text>
-          <text class="jp-sub gold" x="76" y="492" text-anchor="start" font-size="9.5">change · London terminal</text>
-          <text class="jp-name" x="76" y="624" text-anchor="start" font-size="12.5">EDINBURGH</text>
-          <text class="jp-sub"  x="76" y="642" text-anchor="start" font-size="9.5">arrival</text>
-        </svg>
-
-        <!-- legend -->
-        <div class="hx-legend">
-          <span class="hx-key"><i class="teal"></i>Southern · leg 1</span>
-          <span class="hx-key"><i class="amber"></i>Thameslink · leg 2</span>
-          <span class="hx-key"><i class="dash"></i>Tube / walk · fixed link</span>
-          <span class="hx-key"><i class="coral"></i>LNER · leg 3</span>
-          <span class="hx-key"><i class="cream"></i>✓ = trackable live</span>
+        <!-- snapshot loop off the in-memory store -->
+        <div class="pl-loop">
+          <span class="pl-loop-arm" aria-hidden="true"></span>
+          <div class="pl-snap">
+            <span class="pl-tag coral">Snapshot · ~3 MB</span>
+            <b>Restart? Reloads in seconds</b>
+            <small>Each build writes a compact snapshot to disk. Any restart or update loads it instantly. <span class="pl-chip">NO RE-INGEST</span> Only the nightly refresh does the heavy build again.</small>
+          </div>
         </div>
       </div>
 
-      <p class="hx-foot reveal">The wait shown at a change is a real minimum interchange time, not a guess, and the Tube / walk link uses a deliberately cautious built-in allowance.</p>
+      <div class="jp-scanline reveal" aria-hidden="true">
+        <span class="sl-rail"><span class="sl-dash amber"></span></span>
+        <span class="sl-note">One Connection Scan · sweeps the whole day once · answers in milliseconds · 0 external calls</span>
+        <span class="sl-rail"><span class="sl-dash amber"></span></span>
+      </div>
+      <p class="jp-out reveal">The output, for Billingshurst to Edinburgh:</p>
 
-      <div class="jp-think reveal">
-        <div class="jp-scan">
-          <h3>One sweep, not a search</h3>
-          <p>Every night at around 3am the server pulls Network Rail's complete GB
-          timetable and chops every train into station-to-station hops, all held in
-          memory. Ask for A to B and a <b>Connection Scan</b> runs through the whole
-          day's hops once, in departure order, keeping the earliest arrival at every
-          station it can reach. The best route simply falls out, and any number of
-          changes comes with it, nobody has to ask. No external API is called at
-          query time.</p>
-        </div>
-        <div class="jp-stats">
-          <div class="jp-stat"><b>~70,000</b><span>passenger trains in a day's GB timetable, refreshed nightly</span></div>
-          <div class="jp-stat"><b>~255,000</b><span>station-to-station hops, held in memory, ready to sweep</span></div>
-          <div class="jp-stat"><b>0</b><span>external API calls at query time · answers in milliseconds</span></div>
-        </div>
+      <!-- The journey: a fluid timeline. Horizontal on wide screens, vertical spine on narrow. -->
+      <ol class="jt reveal" style="--i:2" data-flowdiagram aria-label="Journey from Billingshurst to Edinburgh: Southern to Three Bridges, change, Thameslink to Blackfriars, Tube or walk to King's Cross, then LNER to Edinburgh. Every train leg is individually trackable.">
+        <li class="jt-stop"><span class="jt-dot start"></span><span class="jt-txt"><b>Billingshurst</b><em>no direct train exists</em></span></li>
+        <li class="jt-leg teal"><span class="jt-rail"><span class="jt-flow"></span></span><span class="jt-leg-i"><span class="op">Southern</span><span class="chip ok">✓ trackable</span></span></li>
+        <li class="jt-stop change"><span class="jt-dot"></span><span class="jt-txt"><b>Three Bridges</b><em>change · 5 min minimum</em></span></li>
+        <li class="jt-leg amber"><span class="jt-rail"><span class="jt-flow"></span></span><span class="jt-leg-i"><span class="op">Thameslink</span><span class="chip ok">✓ trackable</span></span></li>
+        <li class="jt-stop change"><span class="jt-dot"></span><span class="jt-txt"><b>Blackfriars</b><em>off here for the Tube</em></span></li>
+        <li class="jt-leg walk"><span class="jt-rail dashed"><span class="jt-flow"></span></span><span class="jt-leg-i"><span class="op ink">Tube / walk</span><span class="chip">not a change</span></span></li>
+        <li class="jt-stop change"><span class="jt-dot"></span><span class="jt-txt"><b>King's Cross</b><em>change · London terminal</em></span></li>
+        <li class="jt-leg coral"><span class="jt-rail"><span class="jt-flow"></span></span><span class="jt-leg-i"><span class="op">LNER</span><span class="chip ok">✓ trackable</span></span></li>
+        <li class="jt-stop"><span class="jt-dot end"></span><span class="jt-txt"><b>Edinburgh</b><em>arrival</em></span></li>
+      </ol>
+      <div class="jt-legend reveal">
+        <span class="lg"><i class="sw teal"></i>Southern</span>
+        <span class="lg"><i class="sw amber"></i>Thameslink</span>
+        <span class="lg"><i class="sw ink dashed"></i>Tube / walk · fixed link</span>
+        <span class="lg"><i class="sw coral"></i>LNER</span>
       </div>
 
       <div class="how-grid jp-cards">
