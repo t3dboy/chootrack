@@ -777,3 +777,80 @@ footer .legal{
 @media (prefers-reduced-motion: reduce){
   .hx-flow{animation:none}
 }
+
+/* ============================================================================
+   THE JOURNEY PLANNER (how-it-works sub-block)
+   The Billingshurst → Edinburgh journey strip: station nodes joined by leg
+   rails with colour-coded travelling dashes. Reuses the .hx-pipe / .hx-flow
+   machinery above (same keyframes, same idle pause, same reduced-motion
+   freeze), plus the Connection Scan explainer and scale tiles.
+   ========================================================================== */
+.jp-block{margin-top:76px}
+@media(max-width:760px){.jp-block{margin-top:56px}}
+.jp-head{
+  font-family:var(--disp);text-transform:uppercase;
+  font-size:clamp(28px,4.6vw,56px);line-height:.98;margin:20px 0 16px;
+}
+.jp-head .g{color:var(--gold)}
+
+/* route caption strip at the top of the diagram card */
+.jp-route{
+  font-family:var(--mono);font-weight:700;font-size:clamp(10px,2.4vw,12.5px);
+  letter-spacing:.08em;text-transform:uppercase;
+  border-bottom:2px dashed var(--ink);padding-bottom:14px;margin-bottom:18px;
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+}
+.jp-route .rt-b{background:var(--amber);border:2px solid var(--ink);border-radius:7px;padding:3px 8px}
+.jp-route .rt-n{margin-left:auto;color:var(--ink-soft);letter-spacing:.05em;font-weight:500;text-transform:none}
+@media(max-width:719px){.jp-route .rt-n{margin-left:0;width:100%}}
+
+/* desktop / mobile SVG swap (same breakpoint as the flow diagram above) */
+.jp-desk{display:block;width:100%;height:auto}
+.jp-mob{display:none}
+@media(max-width:719px){
+  .jp-desk{display:none}
+  .jp-mob{display:block;width:100%;height:auto;max-width:420px;margin:0 auto}
+}
+
+/* SVG parts specific to the journey strip */
+.jp-st{fill:#fff;stroke:var(--ink);stroke-width:3}
+.jp-st.amber{fill:var(--amber)}
+.jp-st.teal{fill:var(--teal)}
+.jp-chip{fill:var(--cream);stroke:var(--ink);stroke-width:2}
+.jp-chip.paper{fill:var(--paper)}
+.jp-chip-t{font-family:var(--mono);font-weight:700;font-size:8.5px;letter-spacing:.05em;fill:var(--ink)}
+.jp-name{font-family:var(--mono);font-weight:700;fill:var(--ink);letter-spacing:.04em}
+.jp-sub{font-family:var(--mono);fill:var(--ink-soft);opacity:.85;letter-spacing:.02em}
+.jp-sub.gold{fill:var(--gold);opacity:1}
+
+/* legend keys for the fixed link + trackable chip */
+.hx-key i.dash{
+  background-color:var(--paper);
+  background-image:repeating-linear-gradient(90deg,var(--ink) 0 4px,transparent 4px 7px);
+}
+.hx-key i.cream{background:var(--cream)}
+
+/* the "how it thinks" row: scan explainer + scale tiles */
+.jp-think{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px;margin-top:26px}
+@media(max-width:860px){.jp-think{grid-template-columns:1fr}}
+.jp-scan{
+  background:var(--cream);border:var(--bd);border-radius:16px;
+  box-shadow:var(--shadow-sm);padding:22px 24px;
+}
+.jp-scan h3{
+  font-family:var(--disp);text-transform:uppercase;letter-spacing:.01em;
+  font-size:clamp(17px,2.8vw,22px);margin-bottom:10px;
+}
+.jp-scan p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);max-width:62ch}
+.jp-scan p b{background:var(--paper);border:2px solid var(--ink);padding:0 6px;border-radius:6px;white-space:nowrap;color:var(--ink)}
+.jp-stats{display:grid;gap:12px;align-content:start}
+.jp-stat{
+  display:flex;align-items:baseline;gap:16px;
+  background:var(--cream);border:var(--bd);border-radius:14px;
+  box-shadow:var(--shadow-sm);padding:14px 18px;
+}
+.jp-stat b{font-family:var(--disp);font-size:clamp(20px,3vw,30px);white-space:nowrap;flex:none}
+.jp-stat span{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--ink-soft);line-height:1.5}
+
+/* the planner's own fact cards reuse .how-grid/.hcard; just tuck them in */
+.jp-cards{margin-top:18px}

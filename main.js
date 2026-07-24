@@ -213,14 +213,14 @@
     });
   });
 
-  /* ----------------------------------- how-it-works: flow diagram battery */
-  // The dash animation is pure CSS; JS only pauses it while it's off-screen.
-  const flowDiag = $("[data-flowdiagram]");
-  if (flowDiag) {
+  /* ------------------------- how-it-works: flow + journey diagram battery */
+  // The dash animations are pure CSS; JS only pauses each diagram (the data
+  // flow AND the journey-planner strip) while it's off-screen.
+  $$("[data-flowdiagram]").forEach((diag) => {
     const fio = new IntersectionObserver(
-      (es) => es.forEach((e) => flowDiag.classList.toggle("idle", !e.isIntersecting)),
+      (es) => es.forEach((e) => diag.classList.toggle("idle", !e.isIntersecting)),
       { threshold: 0.05 }
     );
-    fio.observe(flowDiag);
-  }
+    fio.observe(diag);
+  });
 })();

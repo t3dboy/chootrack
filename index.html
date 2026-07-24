@@ -492,15 +492,204 @@
       </div>
     </div>
 
-    <p class="hx-foot reveal">* Your location leaves your phone only when you tap “Guess my train” — and only to ChooTrack’s own server, never to the rail feeds.</p>
+    <p class="hx-foot reveal">* Your location leaves your phone only when you tap “Guess my train”, and only to ChooTrack’s own server, never to the rail feeds.</p>
 
     <div class="how-grid">
-      <div class="hcard reveal" style="--i:0;--rr:-1deg"><span class="num amber">01</span><h3>One server, not many APIs</h3><p>The app never talks to rail APIs directly. Every request goes to ChooTrack’s own backend, and the only things it ever sends are the journey you’re tracking — plus a single location fix if you use Guess my train.</p></div>
-      <div class="hcard reveal" style="--i:1;--rr:1deg"><span class="num teal">02</span><h3>Three official sources</h3><p>Boards come from National Rail Enquiries (LDBWS, licensed via the Rail Data Marketplace). Live running — where a train actually is, its delays and platforms — comes from Realtime Trains. The timetable comes from Network Rail itself.</p></div>
-      <div class="hcard reveal" style="--i:2;--rr:-1deg"><span class="num ink">03</span><h3>A timetable that sleeps at night</h3><p>Network Rail’s national SCHEDULE feed — the full GB timetable — is refreshed on the server every night. It powers journey planning with any number of changes, computed with a Connection Scan routing algorithm, including cross-London Tube and walking transfers with deliberately cautious allowances.</p></div>
-      <div class="hcard reveal" style="--i:0;--rr:1deg"><span class="num amber">04</span><h3>A polite API citizen</h3><p>The backend caches hard — a station’s board is reused for around 25 seconds — and keeps a global cap on calls to the upstream feeds, so ChooTrack stays a considerate consumer of the industry’s data.</p></div>
-      <div class="hcard reveal" style="--i:1;--rr:-1deg"><span class="num coral">05</span><h3>Push, not polling</h3><p>Track a train and the server watches it for you, pushing every change to your Lock Screen Live Activity through Apple’s push service. The app doesn’t need to be open — or even running.</p></div>
-      <div class="hcard reveal" style="--i:2;--rr:1deg"><span class="num teal">06</span><h3>Delay chips</h3><p>“On time”, “+4 late”, platform changes and cancellations come from comparing the booked timetable against the expected and actual times in the live feeds — the same arithmetic a station announcer does.</p></div>
+      <div class="hcard reveal" style="--i:0;--rr:-1deg"><span class="num amber">01</span><h3>One server, not many APIs</h3><p>The app never talks to rail APIs directly. Every request goes to ChooTrack’s own backend, and the only things it ever sends are the journey you’re tracking, plus a single location fix if you use Guess my train.</p></div>
+      <div class="hcard reveal" style="--i:1;--rr:1deg"><span class="num teal">02</span><h3>Three official sources</h3><p>Boards come from National Rail Enquiries (LDBWS, licensed via the Rail Data Marketplace). Live running, where a train actually is, its delays and platforms, comes from Realtime Trains. The timetable comes from Network Rail itself.</p></div>
+      <div class="hcard reveal" style="--i:2;--rr:-1deg"><span class="num ink">03</span><h3>A timetable that sleeps at night</h3><p>Network Rail’s national SCHEDULE feed, the full GB timetable, is refreshed on the server every night at around 3am. By morning it has been chopped into the quarter of a million hops that power the journey planner just below.</p></div>
+      <div class="hcard reveal" style="--i:0;--rr:1deg"><span class="num amber">04</span><h3>A polite API citizen</h3><p>The backend caches hard, a station’s board is reused for around 25 seconds, and keeps a global cap on calls to the upstream feeds, so ChooTrack stays a considerate consumer of the industry’s data.</p></div>
+      <div class="hcard reveal" style="--i:1;--rr:-1deg"><span class="num coral">05</span><h3>Push, not polling</h3><p>Track a train and the server watches it for you, pushing every change to your Lock Screen Live Activity through Apple’s push service. The app doesn’t need to be open, or even running.</p></div>
+      <div class="hcard reveal" style="--i:2;--rr:1deg"><span class="num teal">06</span><h3>Delay chips</h3><p>“On time”, “+4 late”, platform changes and cancellations come from comparing the booked timetable against the expected and actual times in the live feeds, the same arithmetic a station announcer does.</p></div>
+    </div>
+
+    <!-- ------------------------------------------- THE JOURNEY PLANNER -->
+    <div class="jp-block" id="planner">
+      <span class="k-label reveal"><span class="dot"></span> The journey planner</span>
+      <h3 class="jp-head reveal" style="--i:1">No direct train?<br><span class="g">It finds the way.</span></h3>
+      <p class="sub reveal" style="--i:2">
+        Ask for <b>Billingshurst → Edinburgh</b> and no single train will take you.
+        The planner stitches one anyway: Southern to Three Bridges, Thameslink to
+        Blackfriars, a short Tube or walk to King's Cross, then LNER all the way
+        north. Two changes and a cross-London transfer, joined up automatically.
+      </p>
+
+      <div class="how-diagram reveal" style="--i:3" data-flowdiagram>
+        <div class="jp-route">
+          <span class="rt-b">Billingshurst</span>→<span class="rt-b">Edinburgh</span>
+          <span class="rt-n">2 changes + 1 cross-London transfer · found in milliseconds</span>
+        </div>
+
+        <!-- desktop / tablet: the strip runs left to right -->
+        <svg class="jp-desk" viewBox="0 0 960 200" role="img" aria-labelledby="jpTitleD jpDescD">
+          <title id="jpTitleD">The journey planner: Billingshurst to Edinburgh</title>
+          <desc id="jpDescD">Journey strip. Southern from Billingshurst to Three Bridges, a change with a 5 minute minimum, Thameslink to Blackfriars, a Tube or walk transfer to King's Cross that is not counted as a change, then LNER to Edinburgh. Every train leg is individually trackable live.</desc>
+
+          <!-- leg rails -->
+          <path class="hx-pipe" d="M78 104 H272"/>
+          <path class="hx-pipe" d="M308 104 H502"/>
+          <path class="hx-pipe" d="M718 104 H882"/>
+
+          <!-- travelling dashes: the journey flowing left to right -->
+          <path class="hx-flow hx-teal"  d="M78 104 H272"/>
+          <path class="hx-flow hx-amber" d="M308 104 H502"/>
+          <path class="hx-flow hx-ink hx-slow" d="M538 104 H682"/>
+          <path class="hx-flow hx-coral" d="M718 104 H882"/>
+
+          <!-- direction chevrons -->
+          <polygon class="hx-chev" points="258,96 272,104 258,112"/>
+          <polygon class="hx-chev" points="488,96 502,104 488,112"/>
+          <polygon class="hx-chev" points="668,96 682,104 668,112"/>
+          <polygon class="hx-chev" points="868,96 882,104 868,112"/>
+
+          <!-- per-leg chips -->
+          <rect class="hx-shadow" x="140" y="33" width="76" height="22" rx="11"/>
+          <rect class="jp-chip" x="137" y="30" width="76" height="22" rx="11"/>
+          <text class="jp-chip-t" x="175" y="45" text-anchor="middle">✓ TRACKABLE</text>
+          <rect class="hx-shadow" x="370" y="33" width="76" height="22" rx="11"/>
+          <rect class="jp-chip" x="367" y="30" width="76" height="22" rx="11"/>
+          <text class="jp-chip-t" x="405" y="45" text-anchor="middle">✓ TRACKABLE</text>
+          <rect class="hx-shadow" x="571" y="33" width="84" height="22" rx="11"/>
+          <rect class="jp-chip paper" x="568" y="30" width="84" height="22" rx="11"/>
+          <text class="jp-chip-t" x="610" y="45" text-anchor="middle">NOT A CHANGE</text>
+          <rect class="hx-shadow" x="765" y="33" width="76" height="22" rx="11"/>
+          <rect class="jp-chip" x="762" y="30" width="76" height="22" rx="11"/>
+          <text class="jp-chip-t" x="800" y="45" text-anchor="middle">✓ TRACKABLE</text>
+
+          <!-- operator / link labels -->
+          <text class="hx-lab hx-lab-teal"  x="175" y="74" text-anchor="middle">SOUTHERN</text>
+          <text class="hx-lab hx-lab-amber" x="405" y="74" text-anchor="middle">THAMESLINK</text>
+          <text class="hx-lab hx-lab-ink"   x="610" y="74" text-anchor="middle">TUBE / WALK</text>
+          <text class="hx-lab hx-lab-coral" x="800" y="74" text-anchor="middle">LNER</text>
+
+          <!-- station nodes -->
+          <circle class="hx-shadow" cx="64" cy="108" r="14"/>
+          <circle class="jp-st" cx="60" cy="104" r="14"/>
+          <circle class="hx-shadow" cx="294" cy="108" r="14"/>
+          <circle class="jp-st amber" cx="290" cy="104" r="14"/>
+          <circle class="hx-shadow" cx="524" cy="108" r="14"/>
+          <circle class="jp-st" cx="520" cy="104" r="14"/>
+          <circle class="hx-shadow" cx="704" cy="108" r="14"/>
+          <circle class="jp-st amber" cx="700" cy="104" r="14"/>
+          <circle class="hx-shadow" cx="904" cy="108" r="14"/>
+          <circle class="jp-st teal" cx="900" cy="104" r="14"/>
+
+          <!-- station names -->
+          <text class="jp-name" x="60"  y="144" text-anchor="middle" font-size="11">BILLINGSHURST</text>
+          <text class="jp-sub"  x="60"  y="162" text-anchor="middle" font-size="9">no direct train exists</text>
+          <text class="jp-name" x="290" y="144" text-anchor="middle" font-size="11">THREE BRIDGES</text>
+          <text class="jp-sub gold" x="290" y="162" text-anchor="middle" font-size="9">change · 5 min minimum</text>
+          <text class="jp-name" x="520" y="144" text-anchor="middle" font-size="11">BLACKFRIARS</text>
+          <text class="jp-sub"  x="520" y="162" text-anchor="middle" font-size="9">off here for the Tube</text>
+          <text class="jp-name" x="700" y="144" text-anchor="middle" font-size="11">KING'S CROSS</text>
+          <text class="jp-sub gold" x="700" y="162" text-anchor="middle" font-size="9">change · London terminal</text>
+          <text class="jp-name" x="900" y="144" text-anchor="middle" font-size="11">EDINBURGH</text>
+          <text class="jp-sub"  x="900" y="162" text-anchor="middle" font-size="9">arrival</text>
+        </svg>
+
+        <!-- mobile: the strip runs top to bottom -->
+        <svg class="jp-mob" viewBox="0 0 380 660" role="img" aria-labelledby="jpTitleM jpDescM">
+          <title id="jpTitleM">The journey planner: Billingshurst to Edinburgh</title>
+          <desc id="jpDescM">Journey strip. Southern from Billingshurst to Three Bridges, a change with a 5 minute minimum, Thameslink to Blackfriars, a Tube or walk transfer to King's Cross that is not counted as a change, then LNER to Edinburgh. Every train leg is individually trackable live.</desc>
+
+          <!-- leg rails -->
+          <path class="hx-pipe" d="M48 57 V173"/>
+          <path class="hx-pipe" d="M48 207 V323"/>
+          <path class="hx-pipe" d="M48 487 V603"/>
+
+          <!-- travelling dashes: the journey flowing top to bottom -->
+          <path class="hx-flow hx-teal"  d="M48 57 V173"/>
+          <path class="hx-flow hx-amber" d="M48 207 V323"/>
+          <path class="hx-flow hx-ink hx-slow" d="M48 357 V453"/>
+          <path class="hx-flow hx-coral" d="M48 487 V603"/>
+
+          <!-- direction chevrons -->
+          <polygon class="hx-chev" points="40,159 48,173 56,159"/>
+          <polygon class="hx-chev" points="40,309 48,323 56,309"/>
+          <polygon class="hx-chev" points="40,439 48,453 56,439"/>
+          <polygon class="hx-chev" points="40,589 48,603 56,589"/>
+
+          <!-- leg labels + chips -->
+          <text class="hx-lab hx-lab-teal" x="76" y="109" text-anchor="start">SOUTHERN</text>
+          <rect class="hx-shadow" x="79" y="122" width="78" height="20" rx="10"/>
+          <rect class="jp-chip" x="76" y="119" width="78" height="20" rx="10"/>
+          <text class="jp-chip-t" x="115" y="132" text-anchor="middle">✓ TRACKABLE</text>
+
+          <text class="hx-lab hx-lab-amber" x="76" y="259" text-anchor="start">THAMESLINK</text>
+          <rect class="hx-shadow" x="79" y="272" width="78" height="20" rx="10"/>
+          <rect class="jp-chip" x="76" y="269" width="78" height="20" rx="10"/>
+          <text class="jp-chip-t" x="115" y="282" text-anchor="middle">✓ TRACKABLE</text>
+
+          <text class="hx-lab hx-lab-ink" x="76" y="399" text-anchor="start">TUBE / WALK</text>
+          <rect class="hx-shadow" x="79" y="412" width="88" height="20" rx="10"/>
+          <rect class="jp-chip paper" x="76" y="409" width="88" height="20" rx="10"/>
+          <text class="jp-chip-t" x="120" y="422" text-anchor="middle">NOT A CHANGE</text>
+
+          <text class="hx-lab hx-lab-coral" x="76" y="539" text-anchor="start">LNER</text>
+          <rect class="hx-shadow" x="79" y="552" width="78" height="20" rx="10"/>
+          <rect class="jp-chip" x="76" y="549" width="78" height="20" rx="10"/>
+          <text class="jp-chip-t" x="115" y="562" text-anchor="middle">✓ TRACKABLE</text>
+
+          <!-- station nodes -->
+          <circle class="hx-shadow" cx="52" cy="44" r="13"/>
+          <circle class="jp-st" cx="48" cy="40" r="13"/>
+          <circle class="hx-shadow" cx="52" cy="194" r="13"/>
+          <circle class="jp-st amber" cx="48" cy="190" r="13"/>
+          <circle class="hx-shadow" cx="52" cy="344" r="13"/>
+          <circle class="jp-st" cx="48" cy="340" r="13"/>
+          <circle class="hx-shadow" cx="52" cy="474" r="13"/>
+          <circle class="jp-st amber" cx="48" cy="470" r="13"/>
+          <circle class="hx-shadow" cx="52" cy="624" r="13"/>
+          <circle class="jp-st teal" cx="48" cy="620" r="13"/>
+
+          <!-- station names -->
+          <text class="jp-name" x="76" y="44" text-anchor="start" font-size="12.5">BILLINGSHURST</text>
+          <text class="jp-sub"  x="76" y="62" text-anchor="start" font-size="9.5">no direct train exists</text>
+          <text class="jp-name" x="76" y="194" text-anchor="start" font-size="12.5">THREE BRIDGES</text>
+          <text class="jp-sub gold" x="76" y="212" text-anchor="start" font-size="9.5">change · 5 min minimum</text>
+          <text class="jp-name" x="76" y="344" text-anchor="start" font-size="12.5">BLACKFRIARS</text>
+          <text class="jp-sub"  x="76" y="362" text-anchor="start" font-size="9.5">off here for the Tube</text>
+          <text class="jp-name" x="76" y="474" text-anchor="start" font-size="12.5">KING'S CROSS</text>
+          <text class="jp-sub gold" x="76" y="492" text-anchor="start" font-size="9.5">change · London terminal</text>
+          <text class="jp-name" x="76" y="624" text-anchor="start" font-size="12.5">EDINBURGH</text>
+          <text class="jp-sub"  x="76" y="642" text-anchor="start" font-size="9.5">arrival</text>
+        </svg>
+
+        <!-- legend -->
+        <div class="hx-legend">
+          <span class="hx-key"><i class="teal"></i>Southern · leg 1</span>
+          <span class="hx-key"><i class="amber"></i>Thameslink · leg 2</span>
+          <span class="hx-key"><i class="dash"></i>Tube / walk · fixed link</span>
+          <span class="hx-key"><i class="coral"></i>LNER · leg 3</span>
+          <span class="hx-key"><i class="cream"></i>✓ = trackable live</span>
+        </div>
+      </div>
+
+      <p class="hx-foot reveal">The wait shown at a change is a real minimum interchange time, not a guess, and the Tube / walk link uses a deliberately cautious built-in allowance.</p>
+
+      <div class="jp-think reveal">
+        <div class="jp-scan">
+          <h3>One sweep, not a search</h3>
+          <p>Every night at around 3am the server pulls Network Rail's complete GB
+          timetable and chops every train into station-to-station hops, all held in
+          memory. Ask for A to B and a <b>Connection Scan</b> runs through the whole
+          day's hops once, in departure order, keeping the earliest arrival at every
+          station it can reach. The best route simply falls out, and any number of
+          changes comes with it, nobody has to ask. No external API is called at
+          query time.</p>
+        </div>
+        <div class="jp-stats">
+          <div class="jp-stat"><b>~70,000</b><span>passenger trains in a day's GB timetable, refreshed nightly</span></div>
+          <div class="jp-stat"><b>~255,000</b><span>station-to-station hops, held in memory, ready to sweep</span></div>
+          <div class="jp-stat"><b>0</b><span>external API calls at query time · answers in milliseconds</span></div>
+        </div>
+      </div>
+
+      <div class="how-grid jp-cards">
+        <div class="hcard reveal" style="--i:0;--rr:-1deg"><span class="num amber">5 MIN+</span><h3>Changes you can make</h3><p>A change is only offered when you can genuinely make it: a 5 minute minimum by default, longer at the big stations, and 15 minutes at London terminals like King's Cross.</p></div>
+        <div class="hcard reveal" style="--i:1;--rr:1deg"><span class="num ink">TUBE</span><h3>Cross-London, built in</h3><p>A built-in table of fixed links covers the Tube and walking hops between London terminals, Blackfriars to King's Cross among them, with deliberately cautious allowances. They appear in a plan as a transfer step and are never counted as a change.</p></div>
+        <div class="hcard reveal" style="--i:2;--rr:-1deg"><span class="num teal">LIVE</span><h3>Every leg stays trackable</h3><p>Each leg keeps its real service identity, so the signature trick works mid-journey: track the exact train you are sitting on, even one that left before you opened the app.</p></div>
+      </div>
     </div>
 
     <div class="how-privacy reveal">
@@ -560,6 +749,7 @@
       <a href="#guess">Guess</a>
       <a href="#themes">Themes</a>
       <a href="#how-it-works">How it works</a>
+      <a href="#planner">Planner</a>
       <a href="#get">Q3 2026</a>
       <a href="support.html">Support</a>
       <a href="privacy.html">Privacy</a>

@@ -238,7 +238,7 @@
     <div class="card amber" id="contact">
       <h2>Contact support</h2>
       <p>
-        Send a message and a human will read it — no account, no ticket number, no
+        Send a message and a human will read it. No account, no ticket number, no
         queue. Add your email only if you'd like a reply. Bug reports and “this train
         was wrong” reports are both welcome; the second kind is how the data problems
         get found.
@@ -247,7 +247,7 @@
         <label>Name <span class="opt">(optional)</span>
           <input type="text" name="name" autocomplete="name" maxlength="200">
         </label>
-        <label>Email <span class="opt">(optional — for a reply)</span>
+        <label>Email <span class="opt">(optional, for a reply)</span>
           <input type="email" name="email" autocomplete="email" maxlength="320">
         </label>
         <label>Message
@@ -288,10 +288,10 @@
             .then(function (r) {
               if (r.ok) {
                 form.reset();
-                status.textContent = "Thanks — your message is on its way. We'll reply if you left an email.";
+                status.textContent = "Thanks, your message is on its way. We'll reply if you left an email.";
                 status.className = "form-status ok";
               } else if (r.status === 429) {
-                status.textContent = "Too many messages just now — please wait a minute and try again.";
+                status.textContent = "Too many messages just now. Please wait a minute and try again.";
                 status.className = "form-status err";
               } else {
                 status.textContent = "Sorry, that didn't send. Please try again in a moment.";
@@ -299,7 +299,7 @@
               }
             })
             .catch(function () {
-              status.textContent = "Couldn't reach the server — check your connection and try again.";
+              status.textContent = "Couldn't reach the server. Check your connection and try again.";
               status.className = "form-status err";
             })
             .finally(function () { btn.disabled = false; });
