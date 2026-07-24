@@ -212,4 +212,15 @@
         .join("");
     });
   });
+
+  /* ----------------------------------- how-it-works: flow diagram battery */
+  // The dash animation is pure CSS; JS only pauses it while it's off-screen.
+  const flowDiag = $("[data-flowdiagram]");
+  if (flowDiag) {
+    const fio = new IntersectionObserver(
+      (es) => es.forEach((e) => flowDiag.classList.toggle("idle", !e.isIntersecting)),
+      { threshold: 0.05 }
+    );
+    fio.observe(flowDiag);
+  }
 })();
