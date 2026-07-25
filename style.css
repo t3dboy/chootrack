@@ -108,7 +108,8 @@ main,header.topbar,footer{position:relative;z-index:1}
 .h-giant .hl-amber{background:var(--amber);box-shadow:var(--shadow-sm);padding:0 .12em;display:inline-block;border:var(--bd)}
 .h-giant .outline{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
 .sub{font-size:clamp(15.5px,2vw,21px);line-height:1.55;max-width:56ch;font-weight:500}
-.sub b{background:var(--cream);border:2px solid var(--ink);padding:0 6px;border-radius:6px;white-space:nowrap}
+.sub b{background:var(--cream);color:var(--ink);border:2px solid var(--ink);padding:0 6px;border-radius:6px;white-space:nowrap}
+.sub b.amber{background:var(--amber)}
 
 /* reveal-on-scroll: things fall into place */
 .reveal{
