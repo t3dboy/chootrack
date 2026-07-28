@@ -168,7 +168,7 @@
   const THEMES = {
     dark: {
       h: "Dark: the original Split-Flap",
-      p: "Warm amber on near-black, coral for the past, teal for on-time. The whole app reads like the big board at Paddington after dark.",
+      p: "Warm amber on near-black, coral for the past, teal for on-time — the big board at Paddington after dark. Set in a grotesque at weight 500 on a compact scale, while the split-flap tiles stay monospaced, because a departure board has to hold its columns.",
       sw: ["#0D0E11", "#F5B301", "#FF5A4D", "#2EC4B6"],
       shot: "shots/board-live.png",
       alt: "The Paddington departure board in the Dark theme",
@@ -196,7 +196,7 @@
     },
     purple: {
       h: "Purple: quiet, compact, nocturnal",
-      p: "The only theme that changes its voice as well as its colours: a grotesque at weight 500 instead of heavy monospace, a spacing scale 30% tighter, eight-point corners, outlined buttons rather than filled ones, and rules that fade out at their ends. Blue-grey ground, one blurple accent used as a line rather than a flood.",
+      p: "Quiet and nocturnal: a blue-grey ground with a single blurple accent used as a line rather than a flood, outlined buttons instead of filled ones, and rules that fade out at their ends. It shares Dark's grotesque type and compact spacing.",
       sw: ["#161826", "#9184D9", "#EE8A80", "#5FD3C4"],
       shot: "shots/theme-purple.png",
       alt: "The same board in the Purple theme: blue-grey ground, grotesque type, blurple accents, tighter rows",
