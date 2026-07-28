@@ -187,6 +187,20 @@
       shot: "shots/theme-intercity.png",
       alt: "The same board in the InterCity theme: deep green grounds, livery yellow accents, red alert chips",
     },
+    brutal: {
+      h: "Brutal: this website, inside the app",
+      p: "Cream paper, black ink, amber fills, and structure you can actually see — three-point ink borders throwing hard, unblurred shadows where the other themes draw a hairline. Even the tab bar and nav bar change shape for it.",
+      sw: ["#F4EEE1", "#F5B301", "#0D0E11", "#B43F36"],
+      shot: "shots/theme-brutal.png",
+      alt: "The same board in the Brutal theme: cream paper, heavy black borders with hard offset shadows, amber fills",
+    },
+    purple: {
+      h: "Purple: quiet, compact, nocturnal",
+      p: "The only theme that changes its voice as well as its colours: a grotesque at weight 500 instead of heavy monospace, a spacing scale 30% tighter, eight-point corners, outlined buttons rather than filled ones, and rules that fade out at their ends. Blue-grey ground, one blurple accent used as a line rather than a flood.",
+      sw: ["#161826", "#9184D9", "#EE8A80", "#5FD3C4"],
+      shot: "shots/theme-purple.png",
+      alt: "The same board in the Purple theme: blue-grey ground, grotesque type, blurple accents, tighter rows",
+    },
   };
   const themeSec = $("#themes");
   const themeShot = $("#themeShot");
