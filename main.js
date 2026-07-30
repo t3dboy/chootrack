@@ -168,7 +168,7 @@
   const THEMES = {
     dark: {
       h: "Dark: the original Split-Flap",
-      p: "Warm amber on near-black, coral for the past, teal for on-time — the big board at Paddington after dark. Set in a grotesque at weight 500 on a compact scale, while the split-flap tiles stay monospaced, because a departure board has to hold its columns.",
+      p: "Warm amber on near-black, coral for the past, teal for on-time: the big board at Paddington after dark. Set in a grotesque at weight 500 on a compact scale, while the split-flap tiles stay monospaced, because a departure board has to hold its columns.",
       sw: ["#0D0E11", "#F5B301", "#FF5A4D", "#2EC4B6"],
       shot: "shots/board-live.png",
       alt: "The Paddington departure board in the Dark theme",
@@ -189,7 +189,7 @@
     },
     brutal: {
       h: "Brutal: this website, inside the app",
-      p: "Cream paper, black ink, amber fills, and structure you can actually see — three-point ink borders throwing hard, unblurred shadows where the other themes draw a hairline. Even the tab bar and nav bar change shape for it.",
+      p: "Cream paper, black ink, amber fills, and structure you can actually see: three-point ink borders throwing hard, unblurred shadows where the other themes draw a hairline. Even the tab bar and nav bar change shape for it.",
       sw: ["#F4EEE1", "#F5B301", "#0D0E11", "#B43F36"],
       shot: "shots/theme-brutal.png",
       alt: "The same board in the Brutal theme: cream paper, heavy black borders with hard offset shadows, amber fills",
