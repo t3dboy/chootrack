@@ -186,6 +186,46 @@
   </div>
 </section>
 
+
+<!-- ===================================================== PLANNER (headline) -->
+<section class="track-sec section" id="planner-feature">
+  <div class="wrap">
+    <div>
+      <span class="k-label reveal">Headline feature nº2</span>
+      <h2 class="sec-title reveal" style="--i:1">Door to door.<br><span class="g">Tube included.</span></h2>
+      <p class="sub reveal" style="--i:2">
+        Plan <b>Billingshurst to Oxford Circus</b> and ChooTrack hands you the whole
+        journey: every train numbered, the cross-London change opened up into the
+        <b>actual Tube legs</b> — line by line, stop by stop, in the line's own
+        colours — and the lot drawn on a map that sits above the stages. Scroll to
+        read; pull down and the map takes the screen.
+      </p>
+      <div class="mini-feats reveal" style="--i:3">
+        <span class="mf">🗺️ Journey on a map</span>
+        <span class="mf">🚇 Real Tube legs</span>
+        <span class="mf">🎨 Line colours</span>
+        <span class="mf">🚶 Says when to walk</span>
+      </div>
+    </div>
+    <div class="phones-duo">
+      <div class="phone small p1 reveal" style="--i:1;--rr:-6deg" data-tilt>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img class="shot" src="shots/plan-map.png" alt="A planned journey from Billingshurst to Oxford Circus: the route drawn on a map above the numbered trains, with a walk card saying the street walk beats going underground">
+          </div>
+        </div>
+      </div>
+      <div class="phone small p2 reveal" style="--i:2;--rr:5deg" data-tilt>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img class="shot" src="shots/plan-tube.png" alt="A cross-London Tube change opened up: one stop on the Bakerloo line, then eight stops to Angel on the Northern line, every station named on a line-coloured spine">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================================== FEATURES -->
 <section class="features section" id="features">
   <div class="wrap">
@@ -476,9 +516,11 @@
       <p class="sub reveal" style="--i:2">
         Ask for <b>Billingshurst to Edinburgh</b> and no single train will take you.
         The planner stitches one anyway: Southern to Three Bridges, Thameslink to
-        Blackfriars, a short Tube or walk to King's Cross, then LNER all the way
-        north. Two changes and a cross-London transfer, joined up automatically. Here
-        is the whole machine, from the nightly build to the journey it hands you.
+        Blackfriars, the Tube to King's Cross — real lines, real stops, priced by
+        how often the trains run — then LNER all the way north. And where the walk
+        beats the ride, it says so: Blackfriars to City Thameslink is six minutes on
+        foot, and ChooTrack won't send you underground for it. Here is the whole
+        machine, from the nightly build to the journey it hands you.
       </p>
 
       <!-- The pipeline: nightly build, snapshot loop, then the scan, feeding the strip -->
@@ -491,21 +533,21 @@
         <span class="pl-arrow" aria-hidden="true"><span class="pl-dash ink"></span></span>
         <div class="pl-stage">
           <span class="pl-tag teal">Parse + resolve</span>
-          <b>~70,000 trains</b>
-          <small>Passenger only, for the next 3 days. Short-term changes and cancellations resolved so each date is what will really run.</small>
+          <b>~177,000 trains</b>
+          <small>Passenger and replacement services over a 27-day window. Short-term changes and cancellations resolved so each date is what will really run.</small>
         </div>
         <span class="pl-arrow" aria-hidden="true"><span class="pl-dash teal"></span></span>
         <div class="pl-stage hot">
           <span class="pl-tag amber">Held in memory</span>
-          <b>~255,000 hops</b>
-          <small>Every train exploded into station-to-station hops, sorted by departure. Cross-London fixed links and station change times join here.</small>
+          <b>Millions of hops</b>
+          <small>Every train exploded into station-to-station hops, sorted by departure. Station change times join here — and cross-city transfers come from ChooTrack's own Tube and Metro model: 388 stations across London, Glasgow and Newcastle, priced by how often the trains run.</small>
         </div>
 
         <!-- snapshot loop off the in-memory store -->
         <div class="pl-loop">
           <span class="pl-loop-arm" aria-hidden="true"></span>
           <div class="pl-snap">
-            <span class="pl-tag coral">Snapshot · ~3 MB</span>
+            <span class="pl-tag coral">Snapshot · ~7 MB</span>
             <b>Restart? Reloads in seconds</b>
             <small>Each build writes a compact snapshot to disk. Any restart or update loads it instantly. <span class="pl-chip">NO RE-INGEST</span> Only the nightly refresh does the heavy build again.</small>
           </div>
