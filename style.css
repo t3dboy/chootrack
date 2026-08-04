@@ -971,13 +971,20 @@ footer .legal{
   border:2px solid var(--ink);border-radius:12px;
 }
 
+/* A wide card puts its copy and its picture side by side, rather than stacking
+   a narrow image under full-width text and leaving a lake of cream beside it.
+   Constraining the image was the first fix and only half of one: a 420px
+   screenshot centred in a 1900px card is not blown up any more, it is just
+   lost. */
+.ncard-2col{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center}
+@media(max-width:820px){.ncard-2col{grid-template-columns:1fr}}
+.ncard-2col .ncard-copy{display:flex;flex-direction:column;gap:14px}
+.ncard-2col .nshot.tall img{max-width:100%}
+
 /* A full phone SCREEN goes in the phone, like everywhere else on this page.
    A screenshot of a whole app screen sitting flat in a rounded box reads as a
    picture of a picture; the frame is what makes it read as a device. */
-.ncard-phone{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center}
-@media(max-width:820px){.ncard-phone{grid-template-columns:1fr}}
-.ncard-phone .ncard-copy{display:flex;flex-direction:column;gap:14px}
-.ncard-phone .phone{--pw:min(300px,78vw);margin:0 auto}
+.ncard-2col .phone{--pw:min(300px,78vw);margin:0 auto}
 .ncard h3{font-family:var(--body);font-weight:700;font-size:18px}
 .ncard p{font-size:14.5px;line-height:1.55;color:var(--ink-soft)}
 .ncard .num{
