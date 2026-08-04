@@ -70,8 +70,8 @@
       <div class="phone" data-tilt>
         <div class="phone-frame">
           <div class="phone-screen xfade" id="heroXfade">
-            <img class="shot" src="shots/board-live.png" alt="ChooTrack departure board for London Paddington, live at 14:16">
-            <img class="shot over" src="shots/board-past.png" alt="The same board rewound 25 minutes into the past, departed trains shown again">
+            <img class="shot" src="shots/board-live.png" alt="ChooTrack departure board for London Paddington, live, with the time scrubber and platform filter chips">
+            <img class="shot over" src="shots/board-past.png" alt="The same board dragged 90 minutes into the past: the scrubber washes coral, a PAST chip appears, and departed and cancelled trains are shown again">
           </div>
           <span class="ph-flag live">● LIVE</span>
           <span class="ph-flag past">⟲ IN THE PAST</span>
@@ -172,7 +172,7 @@
       <div class="phone small p1 reveal" style="--i:1;--rr:-6deg" data-tilt>
         <div class="phone-frame">
           <div class="phone-screen">
-            <img class="shot" src="shots/detail.png" alt="ChooTrack service detail: the calling-point spine drawn as a train, amber carriages for passed stops, a glowing locomotive at the current stop">
+            <img class="shot" src="shots/detail.png" alt="A live Elizabeth line service running 15 minutes late, its calling points drawn as a train with amber carriages for the stops already passed">
           </div>
         </div>
       </div>
@@ -292,14 +292,31 @@
         <div class="nshot"><img src="shots/new-cancelled.png" alt="A departure row for Cardiff Central at 14:25 with a coral CANCELLED chip"></div>
       </div>
 
-      <div class="ncard reveal" style="--i:3">
-        <span class="num ink">TUBE</span>
-        <h3>410 stops, drawn line by line</h3>
+      <div class="ncard wide reveal" style="--i:3">
+        <span class="num ink">TRAMS</span>
+        <h3>Every tram in Britain, drawn line by line</h3>
         <p>
-          Cross-city hops used to be a table of cautious guesses. Now the networks
-          themselves are modelled: the Underground and DLR, the Glasgow Subway,
-          the Tyne and Wear Metro, and the Edinburgh trams. A change opens up into
-          the lines you actually ride, in their own colours.
+          Nine networks and 723 stops: the Underground and DLR, Manchester's
+          Metrolink, the Sheffield Supertram, Nottingham, the West Midlands,
+          Blackpool's seafront, Croydon, the Glasgow Subway, the Tyne and Wear
+          Metro and the Edinburgh trams. Ask for Sheffield to Rotherham Parkgate
+          and you get the Blue line to Fitzalan Square and then the tram-train,
+          each in its own colour, every stop named, on a map. Half of these
+          places have no railway station at all: Salford Quays, Leith, the
+          Trafford Centre, Edinburgh Airport. Until now the app could not take
+          you to any of them.
+        </p>
+        <div class="nshot tall"><img src="shots/plan-tram.png" alt="Sheffield to Rotherham Parkgate: a map of the route above the stages, then the Blue line for one stop to Fitzalan Square and the Tram-Train for twelve more, each drawn on a line-coloured spine"></div>
+      </div>
+
+      <div class="ncard reveal" style="--i:4">
+        <span class="num ink">TUBE</span>
+        <h3>Modelled, not looked up</h3>
+        <p>
+          Cross-city hops used to be a table of cautious guesses with one blanket
+          number each. The networks are modelled now, so a change opens up into
+          the lines you actually ride, in their own colours, with the walk
+          between them stated when there is one.
         </p>
         <div class="nshot"><img src="shots/new-metro-spine.png" alt="A Circle line spine in its own yellow, running Blackfriars through Mansion House to Monument"></div>
       </div>
@@ -314,6 +331,7 @@
           number. The board gets the space back.
         </p>
         <div class="nshot"><img src="shots/new-scrubber-past.png" alt="The time scrubber showing 13:25, thirty five minutes ago, the tape washed coral with a PAST chip and the words drag to return to live"></div>
+        <div class="nshot"><img src="shots/board-ahead.png" alt="The same board dragged an hour forward instead: the tape cools to teal and the chip reads AHEAD"></div>
       </div>
     </div>
 
@@ -613,7 +631,7 @@
         <div class="pl-stage hot">
           <span class="pl-tag amber">Held in memory</span>
           <b>Millions of hops</b>
-          <small>Every train exploded into station-to-station hops, sorted by departure. Station change times join here, and cross-city transfers come from ChooTrack's own Tube, Metro and Tram model: 410 stations across London, Glasgow, Newcastle and Edinburgh, priced by how often the trains run.</small>
+          <small>Every train exploded into station-to-station hops, sorted by departure. Station change times join here, and cross-city transfers come from ChooTrack's own Tube, Metro and Tram model: 723 stops across nine networks, every tram and light rail system in Britain, priced by how often the trains run.</small>
         </div>
 
         <!-- snapshot loop off the in-memory store -->
@@ -655,7 +673,7 @@
 
       <div class="how-grid jp-cards">
         <div class="hcard reveal" style="--i:0;--rr:-1deg"><span class="num amber">5 MIN+</span><h3>Changes you can make</h3><p>A change is only offered when you can genuinely make it: a 5 minute minimum by default, longer at the big stations, and 15 minutes at London terminals like King's Cross.</p></div>
-        <div class="hcard reveal" style="--i:1;--rr:1deg"><span class="num ink">TUBE</span><h3>Cross-London, modelled</h3><p>Cross-city hops are not a lookup table of cautious guesses any more. ChooTrack models the networks themselves, station by station and line by line, and routes across them like the railway: 410 stops across the Underground and DLR, the Glasgow Subway, the Tyne and Wear Metro and the Edinburgh trams. A transfer opens up into the lines you actually ride, and is never counted as a change.</p></div>
+        <div class="hcard reveal" style="--i:1;--rr:1deg"><span class="num ink">TUBE</span><h3>Cross-London, modelled</h3><p>Cross-city hops are not a lookup table of cautious guesses any more. ChooTrack models the networks themselves, station by station and line by line, and routes across them like the railway: 723 stops across the Underground and DLR, Manchester's Metrolink, the Sheffield Supertram, Nottingham, the West Midlands, Blackpool, Croydon, the Glasgow Subway, the Tyne and Wear Metro and the Edinburgh trams. A transfer opens up into the lines you actually ride, and is never counted as a change.</p></div>
         <div class="hcard reveal" style="--i:2;--rr:-1deg"><span class="num teal">LIVE</span><h3>Every leg stays trackable</h3><p>Each leg keeps its real service identity, so the signature trick works mid-journey: track the exact train you are sitting on, even one that left before you opened the app.</p></div>
       </div>
     </div>
