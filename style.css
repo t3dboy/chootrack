@@ -937,3 +937,46 @@ footer .legal{
 /* pause off-screen + reduce motion */
 .jp-pipe.idle .pl-dash::after,.jt.idle .jt-flow,.jp-pipe.idle .sl-rail::after{animation-play-state:paused}
 @media (prefers-reduced-motion: reduce){.pl-dash::after,.sl-rail::after,.jt-flow{animation:none!important}}
+
+
+/* ============================================================================
+   WHAT'S NEW — real component renders, not mockups.
+   Every image in this section is a snapshot the app's own test suite produces
+   and compares on every run, so a picture here cannot quietly stop matching
+   the app. Wide, short crops, so they read at a glance rather than being
+   studied — a phone frame would make them look like screens they are not.
+   ========================================================================= */
+.new-sec{background:var(--paper)}
+.new-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:40px}
+@media(max-width:820px){.new-grid{grid-template-columns:1fr}}
+.ncard{
+  background:var(--cream);border:var(--bd);border-radius:18px;
+  box-shadow:var(--shadow-sm);padding:20px 20px 22px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.ncard.wide{grid-column:1 / -1}
+.ncard .nshot{
+  background:#111214;border:2px solid var(--ink);border-radius:12px;
+  overflow:hidden;line-height:0;
+}
+.ncard .nshot img{width:100%;height:auto;display:block}
+/* The spine is tall and portrait; cap it so one card does not tower. */
+.ncard .nshot.tall img{max-height:360px;object-fit:cover;object-position:top}
+.ncard h3{font-family:var(--body);font-weight:700;font-size:18px}
+.ncard p{font-size:14.5px;line-height:1.55;color:var(--ink-soft)}
+.ncard .num{
+  align-self:flex-start;font-family:var(--mono);font-weight:700;font-size:11px;
+  letter-spacing:.12em;padding:5px 11px;border:2px solid var(--ink);
+  border-radius:999px;background:var(--paper);
+}
+.ncard .num.amber{background:var(--amber)}
+.ncard .num.teal{background:var(--teal)}
+.ncard .num.coral{background:var(--coral);color:var(--cream)}
+.ncard .num.ink{background:var(--ink);color:var(--cream)}
+.new-foot{
+  margin-top:26px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+  background:var(--ink);color:var(--cream);border:var(--bd);border-radius:18px;
+  box-shadow:var(--shadow);padding:20px 24px;
+}
+.new-foot p{font-size:14.5px;line-height:1.55;max-width:70ch;opacity:.9}
+.new-foot b{color:var(--amber)}

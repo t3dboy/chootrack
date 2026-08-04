@@ -22,6 +22,7 @@
   <div class="name">ChooTrack<sup>™</sup></div>
   <nav>
     <a href="#guess">Guess</a>
+    <a href="#new">New</a>
     <a href="#themes">Themes</a>
     <a href="#how-it-works">How</a>
     <a class="get" href="#get">Q3&nbsp;2026</a>
@@ -237,6 +238,97 @@
   </div>
   <div class="rails"></div>
 </div>
+
+
+<!-- ============================================================== WHAT'S NEW -->
+<section class="new-sec section" id="new">
+  <div class="wrap">
+    <span class="k-label reveal"><span class="dot"></span> Shipped since the last build</span>
+    <h2 class="sec-title reveal" style="--i:1">The railway is<br><span class="g">stranger than that.</span></h2>
+    <p class="sub reveal" style="--i:2">
+      A week of riding real trains and reading real boards, and most of what
+      follows came from something being wrong in a way no test had thought to ask
+      about. Every picture below is the app drawing itself: these are the
+      snapshots its own test suite renders and compares on every run, so a
+      screenshot here cannot quietly stop matching the app.
+    </p>
+
+    <div class="new-grid">
+      <div class="ncard wide reveal" style="--i:0">
+        <span class="num amber">SPLITS</span>
+        <h3>A train that splits in half is still one train</h3>
+        <p>
+          The 08:35 from Victoria divides at Horsham and the back half carries on
+          to Billingshurst. Every app calls that a change, because two ends of one
+          train carry two identities in the data. ChooTrack calls it what the
+          guard calls it: one journey, one spine, a marker at the split you can
+          tap. The instruction is to stay seated, and now the app says so, and
+          keeps tracking you straight through the divide.
+        </p>
+        <div class="nshot tall"><img src="shots/new-splits.png" alt="A service spine from London Paddington through Reading to Bristol Temple Meads, with an amber SPLITS marker at Swindon where the train divides"></div>
+      </div>
+
+      <div class="ncard reveal" style="--i:1">
+        <span class="num teal">ARRIVALS</span>
+        <h3>“When do I actually get there?”</h3>
+        <p>
+          Filter a board to the trains that call where you are going and each row
+          answers the real question: the arrival time, and how long it takes. The
+          loop-line service that gets there fifty minutes later no longer looks
+          identical to the fast one.
+        </p>
+        <div class="nshot"><img src="shots/new-filtered-row.png" alt="A departure row for Portsmouth Harbour at 14:05, noting the train also serves Bognor Regis and divides at Horsham, with the filtered arrival at 14:52 after 47 minutes"></div>
+      </div>
+
+      <div class="ncard reveal" style="--i:2">
+        <span class="num coral">CANCELLED</span>
+        <h3>Cancelled, and a way out</h3>
+        <p>
+          The spine turns coral, the operator's own reason appears when they gave
+          one, and one tap finds the next train doing the same job. The board and
+          the service screen can no longer contradict each other either, which
+          they could when the two feeds disagreed.
+        </p>
+        <div class="nshot"><img src="shots/new-cancelled.png" alt="A departure row for Cardiff Central at 14:25 with a coral CANCELLED chip"></div>
+      </div>
+
+      <div class="ncard reveal" style="--i:3">
+        <span class="num ink">TUBE</span>
+        <h3>410 stops, drawn line by line</h3>
+        <p>
+          Cross-city hops used to be a table of cautious guesses. Now the networks
+          themselves are modelled: the Underground and DLR, the Glasgow Subway,
+          the Tyne and Wear Metro, and the Edinburgh trams. A change opens up into
+          the lines you actually ride, in their own colours.
+        </p>
+        <div class="nshot"><img src="shots/new-metro-spine.png" alt="A Circle line spine in its own yellow, running Blackfriars through Mansion House to Monument"></div>
+      </div>
+
+      <div class="ncard reveal" style="--i:4">
+        <span class="num coral">REWIND</span>
+        <h3>The scrubber, at half the height</h3>
+        <p>
+          Drag the tape and time slides under the needle. Going back warms to
+          coral, going forward cools to teal, and both deepen the further you
+          travel, so you can feel how far you are from now without reading a
+          number. The board gets the space back.
+        </p>
+        <div class="nshot"><img src="shots/new-scrubber-past.png" alt="The time scrubber showing 13:25, thirty five minutes ago, the tape washed coral with a PAST chip and the words drag to return to live"></div>
+      </div>
+    </div>
+
+    <div class="new-foot reveal">
+      <p>
+        And the quiet ones: thirty five stations that had no departures at all,
+        because of a broken code map. Sleepers deleted before they reached you.
+        Cardiff listing one train twice, going to two different places. A walk
+        between two Tube stations that claimed <b>one minute</b> whatever the
+        distance. Trams and Tubes are new; most of this list is the app being
+        <b>less wrong</b>, which is the part you only find by riding the trains.
+      </p>
+    </div>
+  </div>
+</section>
 
 <!-- ================================================================ THEMES -->
 <section class="themes-sec section" id="themes" data-mode="dark">
@@ -497,7 +589,10 @@
         Blackfriars, the Tube to King's Cross (real lines, real stops, priced by
         how often the trains run), then LNER all the way north. And where the walk
         beats the ride, it says so: Blackfriars to City Thameslink is six minutes on
-        foot, and ChooTrack won't send you underground for it. Here is the whole
+        foot, and ChooTrack won't send you underground for it. Where two Tube lines
+        meet at different stations it says that too, with the walk and its length,
+        and where the change stays inside one building it says <b>follow the signs</b>
+        instead, because those are different instructions. Here is the whole
         machine, from the nightly build to the journey it hands you.
       </p>
 
@@ -518,7 +613,7 @@
         <div class="pl-stage hot">
           <span class="pl-tag amber">Held in memory</span>
           <b>Millions of hops</b>
-          <small>Every train exploded into station-to-station hops, sorted by departure. Station change times join here, and cross-city transfers come from ChooTrack's own Tube and Metro model: 388 stations across London, Glasgow and Newcastle, priced by how often the trains run.</small>
+          <small>Every train exploded into station-to-station hops, sorted by departure. Station change times join here, and cross-city transfers come from ChooTrack's own Tube, Metro and Tram model: 410 stations across London, Glasgow, Newcastle and Edinburgh, priced by how often the trains run.</small>
         </div>
 
         <!-- snapshot loop off the in-memory store -->
@@ -554,13 +649,13 @@
       <div class="jt-legend reveal">
         <span class="lg"><i class="sw teal"></i>Southern</span>
         <span class="lg"><i class="sw amber"></i>Thameslink</span>
-        <span class="lg"><i class="sw ink dashed"></i>Tube / walk · fixed link</span>
+        <span class="lg"><i class="sw ink dashed"></i>Tube / walk · modelled</span>
         <span class="lg"><i class="sw coral"></i>LNER</span>
       </div>
 
       <div class="how-grid jp-cards">
         <div class="hcard reveal" style="--i:0;--rr:-1deg"><span class="num amber">5 MIN+</span><h3>Changes you can make</h3><p>A change is only offered when you can genuinely make it: a 5 minute minimum by default, longer at the big stations, and 15 minutes at London terminals like King's Cross.</p></div>
-        <div class="hcard reveal" style="--i:1;--rr:1deg"><span class="num ink">TUBE</span><h3>Cross-London, built in</h3><p>A built-in table of fixed links covers the Tube and walking hops between London terminals, Blackfriars to King's Cross among them, with deliberately cautious allowances. They appear in a plan as a transfer step and are never counted as a change.</p></div>
+        <div class="hcard reveal" style="--i:1;--rr:1deg"><span class="num ink">TUBE</span><h3>Cross-London, modelled</h3><p>Cross-city hops are not a lookup table of cautious guesses any more. ChooTrack models the networks themselves, station by station and line by line, and routes across them like the railway: 410 stops across the Underground and DLR, the Glasgow Subway, the Tyne and Wear Metro and the Edinburgh trams. A transfer opens up into the lines you actually ride, and is never counted as a change.</p></div>
         <div class="hcard reveal" style="--i:2;--rr:-1deg"><span class="num teal">LIVE</span><h3>Every leg stays trackable</h3><p>Each leg keeps its real service identity, so the signature trick works mid-journey: track the exact train you are sitting on, even one that left before you opened the app.</p></div>
       </div>
     </div>
